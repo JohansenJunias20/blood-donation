@@ -14,9 +14,11 @@ services:
           memory: 256M
   apache:
     container_name: web_server
-    image: php:8.0-apache
+    build: 
+      context: ./dockerfiles/php/
     volumes:
       - "./web/:/var/www/html/"
+      - ".env/:/var/www/html/.env"
     ports:
       - 80:80
     deploy:
@@ -25,6 +27,7 @@ services:
           memory: 256M
     depends_on:
       - mysql
+
   python:
     container_name: model
     image: smizy/scikit-learn

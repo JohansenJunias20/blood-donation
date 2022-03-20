@@ -1,24 +1,36 @@
 services:
   mysql:
     container_name: db
-    image: mysql:alpine
+    image: mysql:latest
     volumes:
-      - "./database:/var/lib/mysql"
-    network_mode: host
+      - "./database/data/:/var/lib/mysql"
+    env_file:
+      - .env
+    ports:
+      - 3306:3306
     deploy:
       resources:
         limits:
           memory: 256M
-    ports:
-      - "80:80"
   apache:
     container_name: web_server
     image: php:8.0-apache
     volumes:
       - "./web/:/var/www/html/"
-    network_mode: host
+    ports:
+      - 80:80
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+    depends_on:
+      - mysql
   python:
     container_name: model
     image: smizy/scikit-learn
     volumes:
       - "./model:/code"
+    deploy:
+      resources:
+        limits:
+          memory: 256M    

@@ -1,0 +1,24 @@
+services:
+  mysql:
+    container_name: db
+    image: mysql:alpine
+    volumes:
+      - "./database:/var/lib/mysql"
+    network_mode: host
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+    ports:
+      - "80:80"
+  apache:
+    container_name: web_server
+    image: php:8.0-apache
+    volumes:
+      - "./web/:/var/www/html/"
+    network_mode: host
+  python:
+    container_name: model
+    image: smizy/scikit-learn
+    volumes:
+      - "./model:/code"

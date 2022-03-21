@@ -27,7 +27,20 @@ services:
           memory: 256M
     depends_on:
       - mysql
-
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin:latest
+    deploy:
+      resources:
+        limits:
+          memory: 75M
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - PMA_ARBITRARY=1
+    depends_on:
+      - mysql
   python:
     container_name: model
     image: smizy/scikit-learn

@@ -14,9 +14,10 @@ function request($url, $method = "GET", $headers = array(), $body = array())
         'http' => array(
             'method' => $method,
             'header' => $real_header,
+            'content' => $body == array() ? null : $body
         )
     );
 
     $context = stream_context_create($opts);
-    return file_get_contents($url,false, $context);
+    return file_get_contents($url, false, $context);
 }

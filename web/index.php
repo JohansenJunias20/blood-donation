@@ -11,6 +11,9 @@ include_once("autoload.php");
     <title>Document</title>
 </head>
     <h1>Hello World</h1>
+    <?php 
+        echo request("http://python/predict?p1=0&p2=30");
+    ?>
 <body>
 </body>
 

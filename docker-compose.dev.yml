@@ -26,7 +26,7 @@ services:
         limits:
           memory: 256M
     depends_on:
-      - mysql
+      - python
   phpmyadmin:
     container_name: phpmyadmin
     image: phpmyadmin:latest
@@ -43,10 +43,20 @@ services:
       - mysql
   python:
     container_name: model
-    image: smizy/scikit-learn
+    build: 
+      context: ./dockerfiles/python/
     volumes:
       - "./model:/code"
+    working_dir: /code/
+    # environment:
+    #   FLASK_DEBUG: 1
+    #   FLASK_ENV: development
+    #   FLASK_APP: ./server.py
+    # command: flask run
+    command: python3 server.py
     deploy:
       resources:
         limits:
           memory: 256M    
+    depends_on:
+      - mysql

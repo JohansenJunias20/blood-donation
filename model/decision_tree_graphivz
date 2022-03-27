@@ -1,0 +1,12 @@
+digraph Tree {
+node [shape=box, style="filled", color="black"] ;
+0 [label="frekuensi donor per tahun <= 99.5\nmse = 0.208\nsamples = 17\nvalue = 0.294", fillcolor="#f7dac5"] ;
+1 [label="mse = 0.0\nsamples = 10\nvalue = 0.0", fillcolor="#ffffff"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="Donor 1 tahun terakhir <= 0.5\nmse = 0.204\nsamples = 7\nvalue = 0.714", fillcolor="#eca572"] ;
+0 -> 2 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+3 [label="mse = 0.0\nsamples = 2\nvalue = 0.0", fillcolor="#ffffff"] ;
+2 -> 3 ;
+4 [label="mse = 0.0\nsamples = 5\nvalue = 1.0", fillcolor="#e58139"] ;
+2 -> 4 ;
+}

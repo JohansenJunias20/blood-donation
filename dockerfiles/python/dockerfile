@@ -2,10 +2,6 @@ FROM python:3
 # RUN pip install pickle
 WORKDIR /code
 RUN apt-get update
-RUN apt-get install -y cmake autoconf automake libtool nasm make pkg-config
-RUN apt-get install -y pngquant
-RUN echo "$(ls)"
-RUN python3 -m pip install watchdog
 RUN python3 -m pip install --upgrade pip setuptools wheel 
 COPY ./requirement.txt ./
 RUN python3 -m pip install -r requirement.txt  

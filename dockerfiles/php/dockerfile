@@ -1,2 +1,14 @@
 FROM php:8.0-apache
 RUN docker-php-ext-install mysqli
+RUN apt-get update
+RUN apt update
+RUN apt upgrade -y
+# RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+# RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+RUN apt-get install git -y
+# RUN apt install zip unzip -y
+# RUN apt-get install libzip-dev -y
+# RUN apt-get install php-zip -y
+# RUN docker-php-ext-install zip
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
+WORKDIR /var/www/html/

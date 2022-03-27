@@ -12,8 +12,19 @@ services:
       resources:
         limits:
           memory: 256M
+  composer:
+    container_name: composer
+    image: composer
+    volumes:
+      - "./web/:/code/"
+    working_dir: /code/
+    command: composer install
+    deploy:
+      resources:
+        limits:
+          memory: 32M    
   apache:
-    container_name: web_server
+    container_name: web_server2
     build: 
       context: ./dockerfiles/php/
     volumes:
@@ -21,10 +32,11 @@ services:
       - ".env/:/var/www/html/.env"
     ports:
       - 80:80
+    working_dir: /var/www/html/
     deploy:
       resources:
         limits:
-          memory: 256M
+          memory: 128M
     depends_on:
       - python
   phpmyadmin:
@@ -33,7 +45,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 75M
+          memory: 64M
     restart: always
     ports:
       - 8080:80

@@ -25,9 +25,9 @@
                         <label for="exampleInputPassword1" style="font-size: 2vw;">Password</label>
                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" style="font-size: 2vw;">
                     </div>
-                    <a href="profile.html" type="submit" class="btn btn-primary" style="font-size: 2vw; width: 100%;">Login</a>
-                    <small id="forgetpassword" class="form-text"><a href="Forget_Password.html" style="font-size: 1vw;">Forget Password</a></small>
-                    <a href="Register.html" type="button" class="btn btn-primary" style="font-size: 2vw; margin-top: 1vw; width: 100%;">Register</a>
+                    <a href="profile.php" type="submit" class="btn btn-primary" style="font-size: 2vw; width: 100%;">Login</a>
+                    <small id="forgetpassword" class="form-text"><a href="Forget_Password.php" style="font-size: 1vw;">Forget Password</a></small>
+                    <a href="Register.php" type="button" class="btn btn-primary" style="font-size: 2vw; margin-top: 1vw; width: 100%;">Register</a>
                 </form>
             </div>
         </div>

@@ -71,10 +71,10 @@
 
 <body>
     <div class="topnav" id="myTopnav">
-      <a class="nav-item nav-link active" href="profile.html" >Create Profile Pendonor <span class="sr-only">(current)</span></a>
-        <a href="list.html">List Ranking Pendonor</a>
-        <a href="transaksi.html">Create Transaksi Donor</a>
-        <a href="history.html">History Transaksi Donor</a>
+      <a class="nav-item nav-link active" href="profile.php" >Create Profile Pendonor <span class="sr-only">(current)</span></a>
+        <a href="list.php">List Ranking Pendonor</a>
+        <a href="transaksi.php">Create Transaksi Donor</a>
+        <a href="history.php">History Transaksi Donor</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()"> <i class="fa fa-bars"></i>
         </a>
     </div>

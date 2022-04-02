@@ -30,7 +30,7 @@
                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" style="font-size: 2vw;">
                     </div>
                     <button type="submit" class="btn btn-primary" style="font-size: 2vw; margin-top: 1vw;">Register</button>
-                    <small id="forgetpassword" class="form-text" style="font-size: 1vw;">Have Account? <a href="Login.html">Login</a></small>
+                    <small id="forgetpassword" class="form-text" style="font-size: 1vw;">Have Account? <a href="Login.php">Login</a></small>
                 </form>
             </div>
         </div>

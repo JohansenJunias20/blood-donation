@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $date_start = $date_start + ($day_offset * 24 * 60 * 60);
                 $start =  new DateTime(date("Y-m-d", $date_start));
                 $totaldonor = 0;
-                $isActive = rand(0, 5); # keaktifan dari sang pendonor, bila 0 maka lebih besar kemungkinan aktif
+                $isActive = rand(0, 4); # keaktifan dari sang pendonor, bila 0 maka lebih besar kemungkinan aktif
                 while ($date_start < $now) {
                     $final_date = date("Y-m-d", $date_start);
                     // echo "generate transaction of " . $row['nama'] . " on $final_date";

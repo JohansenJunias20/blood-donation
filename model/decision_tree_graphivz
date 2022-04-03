@@ -1,8 +1,8 @@
 digraph Tree {
 node [shape=box, style="filled", color="black"] ;
-0 [label="rata-rata interval donor <= 14.119\ngini = 0.499\nsamples = 300\nvalue = [158, 142]\nclass = Aktif", fillcolor="#fcf2eb"] ;
-1 [label="gini = 0.0\nsamples = 142\nvalue = [0, 142]\nclass = non Aktif", fillcolor="#399de5"] ;
+0 [label="rata-rata interval donor <= 12.125\ngini = 0.47\nsamples = 300\nvalue = [187, 113]\nclass = Aktif", fillcolor="#f5cdb1"] ;
+1 [label="gini = 0.0\nsamples = 113\nvalue = [0, 113]\nclass = non Aktif", fillcolor="#399de5"] ;
 0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
-2 [label="gini = 0.0\nsamples = 158\nvalue = [158, 0]\nclass = Aktif", fillcolor="#e58139"] ;
+2 [label="gini = 0.0\nsamples = 187\nvalue = [187, 0]\nclass = Aktif", fillcolor="#e58139"] ;
 0 -> 2 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
 }

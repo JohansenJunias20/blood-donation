@@ -2,12 +2,6 @@
 # generate dummy transaction
 include_once("../autoload.php");
 
-// $result = $conn->query("SELECT * FROM pendonor");
-// if ($result)
-//     while ($row = mysqli_fetch_assoc($result)) {
-//         echo json_encode($row);
-//     }
-//create
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($_GET["q"] == "donor") {
 
@@ -34,8 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $day_offset = rand(0, 365 * 3); # day offset for start
                 $date_start = $date_start + ($day_offset * 24 * 60 * 60);
                 $start =  new DateTime(date("Y-m-d", $date_start));
-                $i = 0;
-                $isActive = rand(0, 2); # keaktifan dari sang pendonor, bila 0 maka lebih besar kemungkinan aktif
+                $totaldonor = 0;
+                $isActive = rand(0, 5); # keaktifan dari sang pendonor, bila 0 maka lebih besar kemungkinan aktif
                 while ($date_start < $now) {
                     $final_date = date("Y-m-d", $date_start);
                     // echo "generate transaction of " . $row['nama'] . " on $final_date";
@@ -43,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $conn->query("INSERT INTO transaksi(id,id_pendonor,tanggal) values(null, " . $row["id"] . ",'$final_date')");
                     // echo mysqli_error($conn);
                     $date_start = $date_start + (rand(60, 100 + (30 * $isActive)) * 24 * 60 * 60);
-                    $i++;
+                    $totaldonor++;
                 }
                 $end = new DateTime(date("Y-m-d", $date_start));
                 $interval = $start->diff($end);
@@ -54,8 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo "total week: ";
                 echo "$totalweek";
                 echo "\n";
-                echo "number donation blood: $i\n";
-                $average = $totalweek / $i;
+                echo "number donation blood: $totaldonor\n";
+                $average = $totalweek / $totaldonor;
                 echo "average: $average";
                 echo "\n";
                 // echo json_encode($row);

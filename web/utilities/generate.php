@@ -1,5 +1,6 @@
 <?php
 # generate dummy transaction
+# tidak dipakai di production
 include_once("../autoload.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -79,6 +80,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button onclick="generatetransaksi()">generate transaksi</button>
     </div>
     <div>
+        <button onclick="generatetransaksiaktifakhir()">generate transaksi aktif di akhir</button>
+    </div>
+    <div>
         <button onclick="deletedonor()">delete donor</button>
     </div>
     <div>
@@ -120,6 +124,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $.ajax({
                 method: "POST",
                 url: "/utilities/generate.php?q=transaksi",
+                success: (data) => {
+                    console.log(data)
+                }
+            })
+        }
+        function generatetransaksiaktifakhir(){
+            console.log("generate transaksi")
+            $.ajax({
+                method: "POST",
+                url: "/utilities/generate.php?q=transaksi&special_case=1",
                 success: (data) => {
                     console.log(data)
                 }

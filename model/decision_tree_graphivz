@@ -1,8 +1,20 @@
 digraph Tree {
 node [shape=box, style="filled", color="black"] ;
-0 [label="rata-rata interval donor <= 12.125\ngini = 0.47\nsamples = 300\nvalue = [187, 113]\nclass = Aktif", fillcolor="#f5cdb1"] ;
-1 [label="gini = 0.0\nsamples = 113\nvalue = [0, 113]\nclass = non Aktif", fillcolor="#399de5"] ;
+0 [label="['interval donor sekarang'] <= 11.875\ngini = 0.403\nsamples = 300\nvalue = [84, 216]\nclass = non Aktif", fillcolor="#86c3ef"] ;
+1 [label="['interval donor sekarang'] <= 0.083\ngini = 0.186\nsamples = 221\nvalue = [23, 198]\nclass = non Aktif", fillcolor="#50a8e8"] ;
 0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
-2 [label="gini = 0.0\nsamples = 187\nvalue = [187, 0]\nclass = Aktif", fillcolor="#e58139"] ;
-0 -> 2 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+2 [label="interval donor seluruhnya <= 12.165\ngini = 0.5\nsamples = 45\nvalue = [23, 22]\nclass = Aktif", fillcolor="#fefaf6"] ;
+1 -> 2 ;
+3 [label="gini = 0.0\nsamples = 22\nvalue = [0, 22]\nclass = non Aktif", fillcolor="#399de5"] ;
+2 -> 3 ;
+4 [label="gini = 0.0\nsamples = 23\nvalue = [23, 0]\nclass = Aktif", fillcolor="#e58139"] ;
+2 -> 4 ;
+5 [label="gini = 0.0\nsamples = 176\nvalue = [0, 176]\nclass = non Aktif", fillcolor="#399de5"] ;
+1 -> 5 ;
+6 [label="interval donor seluruhnya <= 11.981\ngini = 0.352\nsamples = 79\nvalue = [61, 18]\nclass = Aktif", fillcolor="#eda673"] ;
+0 -> 6 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+7 [label="gini = 0.0\nsamples = 18\nvalue = [0, 18]\nclass = non Aktif", fillcolor="#399de5"] ;
+6 -> 7 ;
+8 [label="gini = 0.0\nsamples = 61\nvalue = [61, 0]\nclass = Aktif", fillcolor="#e58139"] ;
+6 -> 8 ;
 }

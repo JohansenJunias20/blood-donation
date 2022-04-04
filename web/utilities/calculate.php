@@ -30,7 +30,29 @@ function calculate($id, $conn)
         $interval = 0;
     else
         $interval = $totalweeks / $totaldonor;
-    $result = intval(predict($interval));
+
+    $sql = "SELECT count(*) as totaldonor_now FROM TRANSAKSI WHERE ID_PENDONOR = $id and year(tanggal) = year(now())";
+    $result = $conn->query($sql);
+    $data = mysqli_fetch_assoc($result);
+    $totaldonor_now = $data['totaldonor_now'];
+    
+    if ($data['totaldonor_now'] == 0){
+        $interval_now = 0;
+    }
+    else{
+        $sql = "SELECT MIN(tanggal) as firsttime FROM TRANSAKSI WHERE ID_PENDONOR = $id and year(tanggal) = year(now())";
+        $result = $conn->query($sql);
+        $data = mysqli_fetch_assoc($result);
+        $first_time = $data['firsttime'];
+        $first_time = new DateTime($first_time);
+        $end_time = new DateTime('now');
+        $days_diff = $end_time->diff($first_time)->days;
+        $totalweeks = $days_diff / 7;
+        $interval_now = $totalweeks / $totaldonor_now;
+    }
+    
+  
+    $result = intval(predict($interval,$interval_now));
     $sql = "UPDATE DONOR SET aktif = $result where id = $id";
     $conn->query($sql);
 }

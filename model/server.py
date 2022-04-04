@@ -11,8 +11,8 @@ loaded_model = pickle.load(open(str(pathlib.Path().resolve()) + "/model", 'rb'))
 def hello_world():
     args = request.args.to_dict()
     input1 = float(args["p1"]) # float tidak boleh di int kan
-    # input2 = int(args["p2"])
-    inputs = [[input1]]
+    input2 = float(args["p2"])
+    inputs = [[input1,input2]]
 
     result = loaded_model.predict(inputs)
     return str(result[0])

@@ -40,7 +40,7 @@ function calculate($id, $conn)
         $interval_now = 0;
     }
     else{
-        $sql = "SELECT MIN(tanggal) as firsttime FROM TRANSAKSI WHERE ID_PENDONOR = $id and year(tanggal) = year(now())";
+        $sql = "SELECT MIN(tanggal) as firsttime FROM TRANSAKSI WHERE ID_PENDONOR = $id and tanggal > now() - INTERVAL 3 MONTH";
         $result = $conn->query($sql);
         $data = mysqli_fetch_assoc($result);
         $first_time = $data['firsttime'];
@@ -57,9 +57,9 @@ function calculate($id, $conn)
     $conn->query($sql);
 }
 
-$result = $conn->query("SELECT * FROM donor");
-if ($result)
-    while ($row = mysqli_fetch_assoc($result)) {
-        calculate($row["id"], $conn);
-    }
+// $result = $conn->query("SELECT * FROM donor");
+// if ($result)
+//     while ($row = mysqli_fetch_assoc($result)) {
+//         calculate($row["id"], $conn);
+//     }
 #endregion

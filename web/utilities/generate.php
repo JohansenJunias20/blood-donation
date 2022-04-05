@@ -20,6 +20,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $conn->query("INSERT INTO DONOR VALUES(NULL, '$phone', '$nama','$resus','$gol','$sex','$email')") or die(mysqli_error($conn));
     } else {
         echo "generate transaksi";
+        if (isset($_GET["special_case"])) {
+            //contoh kasus 1, jarang diawal tapi sering donor baru-baru ini
+            $conn->query("DELETE FROM TRANSAKSI WHERE ID_PENDONOR = 1");
+            $conn->query("INSERT INTO TRANSAKSI(id,id_pendonor,tanggal) VALUES(null,1,'2017-03-03')");
+            $conn->query("INSERT INTO TRANSAKSI(id,id_pendonor,tanggal) VALUES(null,1,'2022-01-01')");
+            $conn->query("INSERT INTO TRANSAKSI(id,id_pendonor,tanggal) VALUES(null,1,'2022-03-03')");
+            //contoh kasus 2, sering diawal tapi jarang donor baru-baru ini
+            $conn->query("DELETE FROM TRANSAKSI WHERE ID_PENDONOR = 2");
+            $conn->query("INSERT INTO TRANSAKSI(id,id_pendonor,tanggal) VALUES(null,2,'2017-03-03')");
+            $conn->query("INSERT INTO TRANSAKSI(id,id_pendonor,tanggal) VALUES(null,2,'2017-05-06')");
+            $conn->query("INSERT INTO TRANSAKSI(id,id_pendonor,tanggal) VALUES(null,2,'2017-09-06')");
+            $conn->query("INSERT INTO TRANSAKSI(id,id_pendonor,tanggal) VALUES(null,2,'2017-12-12')");
+            $conn->query("INSERT INTO TRANSAKSI(id,id_pendonor,tanggal) VALUES(null,2,'2018-02-02')");
+            $conn->query("INSERT INTO TRANSAKSI(id,id_pendonor,tanggal) VALUES(null,2,'2018-05-02')");
+            $conn->query("INSERT INTO TRANSAKSI(id,id_pendonor,tanggal) VALUES(null,2,'2022-01-01')");
+            return;
+            exit;
+        }
         $result = $conn->query("SELECT * FROM donor");
         $conn->query("DELETE FROM transaksi");
         if ($result)
@@ -129,7 +147,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             })
         }
-        function generatetransaksiaktifakhir(){
+
+        function generatetransaksiaktifakhir() {
             console.log("generate transaksi")
             $.ajax({
                 method: "POST",

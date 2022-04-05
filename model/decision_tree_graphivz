@@ -1,20 +1,20 @@
 digraph Tree {
 node [shape=box, style="filled", color="black"] ;
-0 [label="['interval donor sekarang'] <= 11.875\ngini = 0.403\nsamples = 300\nvalue = [84, 216]\nclass = non Aktif", fillcolor="#86c3ef"] ;
-1 [label="['interval donor sekarang'] <= 0.083\ngini = 0.186\nsamples = 221\nvalue = [23, 198]\nclass = non Aktif", fillcolor="#50a8e8"] ;
+0 [label="interval donor seluruhnya <= 11.984\ngini = 0.487\nsamples = 2000\nvalue = [1161, 839]\nclass = Aktif", fillcolor="#f8dcc8"] ;
+1 [label="Total donor seluruhnya <= 1.5\ngini = 0.151\nsamples = 716\nvalue = [59, 657]\nclass = non Aktif", fillcolor="#4ba6e7"] ;
 0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
-2 [label="interval donor seluruhnya <= 12.165\ngini = 0.5\nsamples = 45\nvalue = [23, 22]\nclass = Aktif", fillcolor="#fefaf6"] ;
+2 [label="gini = 0.0\nsamples = 59\nvalue = [59, 0]\nclass = Aktif", fillcolor="#e58139"] ;
 1 -> 2 ;
-3 [label="gini = 0.0\nsamples = 22\nvalue = [0, 22]\nclass = non Aktif", fillcolor="#399de5"] ;
-2 -> 3 ;
-4 [label="gini = 0.0\nsamples = 23\nvalue = [23, 0]\nclass = Aktif", fillcolor="#e58139"] ;
-2 -> 4 ;
-5 [label="gini = 0.0\nsamples = 176\nvalue = [0, 176]\nclass = non Aktif", fillcolor="#399de5"] ;
-1 -> 5 ;
-6 [label="interval donor seluruhnya <= 11.981\ngini = 0.352\nsamples = 79\nvalue = [61, 18]\nclass = Aktif", fillcolor="#eda673"] ;
-0 -> 6 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
-7 [label="gini = 0.0\nsamples = 18\nvalue = [0, 18]\nclass = non Aktif", fillcolor="#399de5"] ;
+3 [label="gini = 0.0\nsamples = 657\nvalue = [0, 657]\nclass = non Aktif", fillcolor="#399de5"] ;
+1 -> 3 ;
+4 [label="Total donor now <= 1.5\ngini = 0.243\nsamples = 1284\nvalue = [1102, 182]\nclass = Aktif", fillcolor="#e9965a"] ;
+0 -> 4 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+5 [label="gini = 0.0\nsamples = 928\nvalue = [928, 0]\nclass = Aktif", fillcolor="#e58139"] ;
+4 -> 5 ;
+6 [label="interval donor sekarang <= 11.875\ngini = 0.5\nsamples = 356\nvalue = [174, 182]\nclass = non Aktif", fillcolor="#f6fbfe"] ;
+4 -> 6 ;
+7 [label="gini = 0.0\nsamples = 182\nvalue = [0, 182]\nclass = non Aktif", fillcolor="#399de5"] ;
 6 -> 7 ;
-8 [label="gini = 0.0\nsamples = 61\nvalue = [61, 0]\nclass = Aktif", fillcolor="#e58139"] ;
+8 [label="gini = 0.0\nsamples = 174\nvalue = [174, 0]\nclass = Aktif", fillcolor="#e58139"] ;
 6 -> 8 ;
 }

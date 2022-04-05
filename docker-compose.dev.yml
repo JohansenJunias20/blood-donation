@@ -22,7 +22,7 @@ services:
         limits:
           memory: 32M    
   apache:
-    container_name: web_server2
+    container_name: web_server
     build: 
       context: ./dockerfiles/php/
     volumes:

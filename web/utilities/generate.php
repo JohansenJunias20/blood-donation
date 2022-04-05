@@ -35,6 +35,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $conn->query("INSERT INTO TRANSAKSI(id,id_pendonor,tanggal) VALUES(null,2,'2018-02-02')");
             $conn->query("INSERT INTO TRANSAKSI(id,id_pendonor,tanggal) VALUES(null,2,'2018-05-02')");
             $conn->query("INSERT INTO TRANSAKSI(id,id_pendonor,tanggal) VALUES(null,2,'2022-01-01')");
+            
+            //contoh kasus 3, 1 tahun 1x
+            $conn->query("DELETE FROM TRANSAKSI WHERE ID_PENDONOR = 3");
+            $conn->query("INSERT INTO TRANSAKSI(id, id_pendonor, tanggal) VALUES(null,3,'2017-03-03')");
+            $conn->query("INSERT INTO TRANSAKSI(id, id_pendonor, tanggal) VALUES(null,3,'2018-02-02')");
+            $conn->query("INSERT INTO TRANSAKSI(id, id_pendonor, tanggal) VALUES(null,3,'2019-02-02')");
+            $conn->query("INSERT INTO TRANSAKSI(id, id_pendonor, tanggal) VALUES(null,3,'2020-02-02')");
+            $conn->query("INSERT INTO TRANSAKSI(id, id_pendonor, tanggal) VALUES(null,3,'2021-02-02')");
+            $conn->query("INSERT INTO TRANSAKSI(id, id_pendonor, tanggal) VALUES(null,3,'2022-01-01')");
+
             return;
             exit;
         }
@@ -55,7 +65,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     // echo "\n";
                     $conn->query("INSERT INTO transaksi(id,id_pendonor,tanggal) values(null, " . $row["id"] . ",'$final_date')");
                     // echo mysqli_error($conn);
-                    $date_start = $date_start + (rand(60, 100 + (30 * $isActive)) * 24 * 60 * 60);
+                    // $date_start = $date_start + (rand(60, 100 + (30 * $isActive)) * 24 * 60 * 60);
+                    $rand = rand(0,1);
+                    if ($rand == 0){
+                        $date_start = $date_start + (rand(60, 365 )* 24 * 60 * 60);
+                    }
+                    else{
+                        $date_start = $date_start + (rand(60, 100 )* 24 * 60 * 60);
+                    }
                     $totaldonor++;
                 }
                 $end = new DateTime(date("Y-m-d", $date_start));

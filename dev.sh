@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "starting dev mode";
-docker-compose -f docker-compose.dev.yml up -d;
+docker-compose -f docker-compose.dev.yml up -d --build;
 
 # wait till website up
 echo "wait response.."

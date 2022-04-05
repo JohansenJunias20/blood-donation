@@ -31,7 +31,7 @@ function calculate($id, $conn)
     else
         $interval = $totalweeks / $totaldonor;
 
-    $sql = "SELECT count(*) as totaldonor_now FROM TRANSAKSI WHERE ID_PENDONOR = $id and year(tanggal) = year(now())";
+    $sql = "SELECT count(*) as totaldonor_now FROM TRANSAKSI WHERE ID_PENDONOR = $id and tanggal >  now() - INTERVAL 12 MONTH";
     $result = $conn->query($sql);
     $data = mysqli_fetch_assoc($result);
     $totaldonor_now = $data['totaldonor_now'];
@@ -40,19 +40,30 @@ function calculate($id, $conn)
         $interval_now = 0;
     }
     else{
-        $sql = "SELECT MIN(tanggal) as firsttime FROM TRANSAKSI WHERE ID_PENDONOR = $id and tanggal > now() - INTERVAL 3 MONTH";
+        $sql = "SELECT MIN(tanggal) as firsttime FROM TRANSAKSI WHERE ID_PENDONOR = $id and tanggal > now() - INTERVAL 12 MONTH";
         $result = $conn->query($sql);
         $data = mysqli_fetch_assoc($result);
         $first_time = $data['firsttime'];
         $first_time = new DateTime($first_time);
         $end_time = new DateTime('now');
         $days_diff = $end_time->diff($first_time)->days;
-        $totalweeks = $days_diff / 7;
-        $interval_now = $totalweeks / $totaldonor_now;
+        $totalweeks_now = $days_diff / 7;
+        $interval_now = $totalweeks_now / $totaldonor_now;
     }
-    
+    // echo "<br>";
+    // echo "<br>";
+    // echo "id: $id";
+    // echo "<br>";
+    // echo "interval: $interval";
+    // echo "<br>";
+    // echo "totalweeks: $totalweeks";
+    // echo "<br>";
+    // echo "interval_now: $interval_now";
+    // echo "<br>";
+    // echo "totalweeks_now: $totalweeks_now";
+    // echo "<br>";
   
-    $result = intval(predict($interval,$interval_now));
+    $result = intval(predict($interval,$interval_now,$totaldonor, $totaldonor_now));
     $sql = "UPDATE DONOR SET aktif = $result where id = $id";
     $conn->query($sql);
 }

@@ -204,25 +204,6 @@
             </form>
         </div>
     </div>
-    
-    <!-- <script>
-      $(function(){
-        $('#submit_daftar').click(function(){
-          Swal.fire({
-            'title': 'Success!',
-            'text': 'Profile succesfully added',
-            'type': 'success'
-          })
-        });
-      });
-    </script> -->
-
-    <script>
-      function notif() {
-        alert("Profile created!");
-        return true;
-      }
-    </script>
-    
+       
   </body>
 </html>

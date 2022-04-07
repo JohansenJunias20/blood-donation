@@ -50,18 +50,18 @@ function calculate($id, $conn)
         $totalweeks_now = $days_diff / 7;
         $interval_now = $totalweeks_now / $totaldonor_now;
     }
-    // echo "<br>";
-    // echo "<br>";
-    // echo "id: $id";
-    // echo "<br>";
-    // echo "interval: $interval";
-    // echo "<br>";
-    // echo "totalweeks: $totalweeks";
-    // echo "<br>";
-    // echo "interval_now: $interval_now";
-    // echo "<br>";
-    // echo "totalweeks_now: $totalweeks_now";
-    // echo "<br>";
+    echo "<br>";
+    echo "<br>";
+    echo "id: $id";
+    echo "<br>";
+    echo "interval: $interval";
+    echo "<br>";
+    echo "totalweeks: $totalweeks";
+    echo "<br>";
+    echo "interval_now: $interval_now";
+    echo "<br>";
+    echo "totalweeks_now: $totalweeks_now";
+    echo "<br>";
   
     $result = intval(predict($interval,$interval_now,$totaldonor, $totaldonor_now));
     $sql = "UPDATE DONOR SET aktif = $result where id = $id";

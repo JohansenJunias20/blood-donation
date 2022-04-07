@@ -4,3 +4,4 @@ include_once("db.php");
 include_once("utilities/request.php");
 // include_once("utilities/calculate.php");
 include_once("utilities/predict.php");
+session_start();

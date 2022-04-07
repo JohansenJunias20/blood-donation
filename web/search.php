@@ -1,14 +1,11 @@
-<?php require_once('autoload.php'); 
-
-    if($_SESSION["id2"] != null)
-    {
-        $id = $_SESSION["id2"];
-    }
-    
-    var_dump($id['nama']);
+<?php require_once('autoload.php');
+    $id = $_SESSION["id2"];
 
     $nilai = "SELECT * FROM donor WHERE id = '$id[id]'";
     $resultid = mysqli_query($conn,$nilai) -> fetch_all(MYSQLI_ASSOC);
+
+    $nilai2 = "SELECT * FROM transaksi WHERE id_pendonor = '$id[id]'";
+    $resulttransaksi = mysqli_query($conn,$nilai2) -> fetch_all(MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -126,14 +123,14 @@
 <body>
 
     <header>
-        <img src="Asset/Icon.png" width="130px"alt="" class="logo">
+    <a href="profile.php"><img src="Asset/Icon.png" width="130px"alt="" class="logo"></a>
         <nav>
             <ul class="nav_link">
                 <li><a href="#">Pendonor</a></li>
                 <li><a href="#">Jadwal</a></li>
             </ul>
         </nav>
-        <a href="#" class="cta"><button>Log Out</button></a>
+        <a href="login.php" class="cta"><button>Log Out</button></a>
     </header>
 
     <div class="search-container" style="padding:20px;">
@@ -146,7 +143,7 @@
 
     <!-- jika data ada -->
     <div class="card kartu">
-        <div class="row">
+        <div class="row" >
             <div class="col-md-8 kertas-biodata">
                 <div class="biodata">
                     <table width="100%">
@@ -166,27 +163,27 @@
                                             <tr>
                                                 <td class="textt">Jenis Kelamin</td>
                                                 <td>:</td>
-                                                <td>Laki-Laki</td>
+                                                <td><?php echo $resultid[0]['jenis kelamin'];?></td>
                                             </tr>
                                             <tr>
                                                 <td class="textt">Gol Darah</td>
                                                 <td>:</td>
-                                                <td>O</td>
+                                                <td><?php echo $resultid[0]['golongan darah'];?></td>
                                             </tr>
                                             <tr>
                                                 <td class="textt">Rhesus</td>
                                                 <td>:</td>
-                                                <td>+</td>
+                                                <td><?php echo $resultid[0]['resus'];?></td>
                                             </tr>
                                             <tr>
                                                 <td class="textt">Email</td>
                                                 <td>:</td>
-                                                <td>ya@yahoo.com</td>
+                                                <td><?php echo $resultid[0]['email'];?></td>
                                             </tr>
                                             <tr>
                                                 <td class="textt">No. Handphone</td>
                                                 <td>:</td>
-                                                <td>312312312</td>
+                                                <td><?php echo $resultid[0]['nomor HP'];?></td>
                                             </tr>                
                                             <tr>
                                                 <td valign="top" class="textt"><button type="button" data-toggle="modal" data-target="#editModal" class="btn btn-primary">Edit Profile</button></td>                                           
@@ -203,7 +200,7 @@
     </div>
 
     <!-- jika data tidak ada -->
-    <div class="card kartu">
+    <!-- <div class="card kartu">
         <div class="row">
             <div class="col-md-8 kertas-biodata">
                 <div class="biodata">
@@ -214,41 +211,7 @@
                 </div>
             </div>
         </div>
-    </div>
-    
-    <!-- jika data ada -->
-    <div class="card kartu">
-        <div class="row">
-            <div class="col-md-8 kertas-history">
-                <div class="biodata">
-                    <table width="100%">
-                        <tbody>
-                            <tr>
-                                <td valign="top">
-                                    <table width="100%" style="padding-left: 2px; padding-right: 13px;">
-                                        <tbody>
-                                            <tr>
-                                                <td><h3>History</h3></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="textt">Tanggal</td>
-                                            </tr>
-                                            <tr>
-                                                <td>27/12/2021</td>
-                                            </tr>
-                                            <tr>
-                                                <td valign="top" class="textt"><button type="button" class="btn btn-primary">Add Transaksi</button></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
+    </div> -->
 
     <!-- jika data tidak ada -->
     <div class="card kartu">
@@ -258,7 +221,45 @@
                     <tr>
                         <td><h3>History</h3></td>
                     </tr>
-                    <p>No Result.</p>
+                    <div class = "container">
+                        <table class="table table-hover" id = "taberu">
+                            <thead>
+                            <tr>
+                                <th>ID </th>
+                                <th>ID Pendonor</th>
+                                <th>Tanggal</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    foreach ($resulttransaksi as $key => $value)
+                                    { ?> 
+                                        <tr>
+                                        <td>
+                                            <?php
+                                                echo $value['id'];
+                                            ?>
+                                        </td>
+
+                                        <td>
+                                            <?php
+                                                echo $value['id_pendonor'];
+                                            ?>
+                                        </td>
+
+                                        <td>
+                                            <?php
+                                                echo $value['tanggal'];
+                                            ?>
+                                        </td>
+                                    </tr>
+                                    <?php 
+                                    }
+                                ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </body>
                 </div>
             </div>
         </div>

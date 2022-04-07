@@ -161,7 +161,7 @@
                     <h3 class="modal-title" >Create Profile!</h3>
                 </div>
 
-            <form action="form_daftar" method="post">
+            <form id="form_daftar" method="post">
                 <div class="modal-body mx-3">
                     <label>Nama</label>  
                     <input name="name" id="name" class="form-control" required>  
@@ -199,7 +199,7 @@
                 <div class="modal-footer">
                     <div id="keterangan"></div>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" id="submit_daftar" name="submit_daftar" class="btn btn-success" onclick="return notif();"><i class="lnr lnr-plus-circle"></i> Create!</button>
+                    <button type="submit" id="submit_daftar" name="submit_daftar" class="btn btn-success"><i class="lnr lnr-plus-circle"></i> Create!</button>
                 </div>
             </form>
         </div>

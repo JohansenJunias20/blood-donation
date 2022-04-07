@@ -17,7 +17,7 @@ if($login->num_rows > 0)
 }
 else
 {
-    echo "<script type='text/javascript'>alert('$var');window.location.replace('proyek.html')</script>";
+    
 }
 $connect->close();
 ?>

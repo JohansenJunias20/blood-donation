@@ -126,17 +126,15 @@
             <img class="card-img-top" src="Asset/create profile.png" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">Create new profile</h5>
-                    
             </div>
             <div class="card-footer">  
-                <a href="#" class="btn btn-primary">Klik Disini</a>
+              <a href="#" class="btn btn-primary">Klik Disini</a>
             </div>
           </div>
           <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="Asset/search profile.jpg" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">Search Profile</h5>
-              
             </div>
             <div class="card-footer">      
                 <a href="#" class="btn btn-primary">Klik Disini</a>
@@ -146,7 +144,6 @@
             <img class="card-img-top" src="Asset/ranking.jpg" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">Ranking</h5>
-            
             </div>
             <div class="card-footer">      
                 <a href="#" class="btn btn-primary">Klik Disini</a>

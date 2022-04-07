@@ -50,7 +50,7 @@
 
 <body>
     <div class="login-form">
-        <form action="/examples/actions/confirmation.php" method="post">
+        <form action="loginphp.php" method="post">
             <div style="width:100%; text-align:center">
                 <img src="asset/Icon.png" width="200" alt="" >
                 
@@ -58,13 +58,13 @@
             <hr>
             <h2 class="text-center" style="color: black;">Login</h2>       
             <div class="form-group">
-                <input type="text" class="form-control" id="InputUsername" placeholder="Username" style="font-size: 2sp;">
+                <input type="text" class="form-control" id="InputUsername" name="username" placeholder="Username" style="font-size: 2sp;">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" id="InputPassword"placeholder="Password" style="font-size: 2sp;">
+                <input type="password" class="form-control" name="password" id="InputPassword"placeholder="Password" style="font-size: 2sp;">
             </div>
             <div class="form-group">
-                <a type="submit" href="profile.php" class="btn btn-primary btn-block">Login</a>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
             </div>
             <div class="botomline">
                 <a href="Register.php" class="float-left">Create an Account!</a>

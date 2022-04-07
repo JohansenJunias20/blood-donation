@@ -50,27 +50,23 @@
 
 <body>
     <div class="login-form">
-        <form action="/examples/actions/confirmation.php" method="post">
+        <form action="registerphp.php" method="post">
             <div style="width:100%; text-align:center">
                 <img src="asset/Icon.png" width="200" alt="" >
-                
             </div>
             <hr>
-            <h2 class="text-center" style="color: black;">Sign Up</h2>       
+            <h2 class="text-center" style="color: black;">Sign Up</h2>
             <div class="form-group">
-                <input type="text" class="form-control" id="RegisterEmail" placeholder="Email" style="font-size: 2sp;">
+                <input type="text" class="form-control" id="username" name="username" placeholder="Username" style="font-size: 2sp;">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="RegisterUsername" placeholder="Username" style="font-size: 2sp;">
-            </div>
-            <div class="form-group">
-                <input type="password" class="form-control" id="RegisterPassword"placeholder="Password" style="font-size: 2sp;">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" style="font-size: 2sp;">
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-block">Create Account!</button>
             </div>
             <div class="botomline">
-                <p class="text-center"><a href="Login.php">Already have an account?</a></p>
+                <p class="text-center"><button href="Login.php">Already have an account?</button></p>
             </div>        
         </form>
     </div>

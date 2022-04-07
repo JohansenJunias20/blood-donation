@@ -1,3 +1,16 @@
+<?php require_once('autoload.php'); 
+
+    if($_SESSION["id2"] != null)
+    {
+        $id = $_SESSION["id2"];
+    }
+    
+    var_dump($id['nama']);
+
+    $nilai = "SELECT * FROM donor WHERE id = '$id[id]'";
+    $resultid = mysqli_query($conn,$nilai) -> fetch_all(MYSQLI_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -124,8 +137,8 @@
     </header>
 
     <div class="search-container" style="padding:20px;">
-        <form action="/action_page.php">
-            <input type="text" placeholder="Masukkan Nama" name="search" style="width:600px; height: 30px; padding: 10px;">
+        <form action="searchphp.php" method="post">
+            <input type="text" placeholder="Masukkan ID" name="search" id="search" style="width:600px; height: 30px; padding: 10px;">
         
         </form>
         
@@ -148,7 +161,7 @@
                                             <tr>
                                                 <td width="45%" valign="top" class="textt">Nama</td>
                                                 <td width="2%">:</td>
-                                                <td style="color: rgb(118, 157, 29); font-weight:bold">Bayu Afrizatul Rizki</td>
+                                                <td style="color: rgb(118, 157, 29); font-weight:bold"><?php echo $resultid[0]['nama'];?></td>
                                             </tr>
                                             <tr>
                                                 <td class="textt">Jenis Kelamin</td>

@@ -133,7 +133,7 @@
 
     <body>
         <header>
-            <img src="Asset/Icon.png" width="130px"alt="" class="logo">
+            <a href="profile.php"><img src="Asset/Icon.png" width="130px"alt="" class="logo"></a>
             <nav>
                 <ul class="nav_link">
                 <li><a href="list.php">Pendonor</a></li>

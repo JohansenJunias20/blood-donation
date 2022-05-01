@@ -207,10 +207,10 @@ $resulttransaksi = mysqli_query($conn, $nilai2)->fetch_all(MYSQLI_ASSOC);
                                                 <td class="textt">Tanggal Join</td>
                                                 <td>:</td>
                                                 <td><?php
-                                                    $result = $conn->query("select TIMESTAMPDIFF(MONTH, MIN(tanggal), now())  as firstime from transaksi where id_pendonor = $id[id]");
+                                                    $result = $conn->query("select concat( TIMESTAMPDIFF(WEEK, MIN(tanggal), now()),' minggu atau ', TIMESTAMPDIFF(MONTH, MIN(tanggal), now()), ' bulan' ) as firstime from transaksi where id_pendonor = $id[id]");
                                                     $row = mysqli_fetch_assoc($result);
                                                     echo $row["firstime"];
-                                                    ?> minggu</td>
+                                                    ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="textt">Status</td>

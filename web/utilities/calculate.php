@@ -68,9 +68,9 @@ function calculate($id, $conn)
     $conn->query($sql);
 }
 
-// $result = $conn->query("SELECT * FROM donor");
-// if ($result)
-//     while ($row = mysqli_fetch_assoc($result)) {
-//         calculate($row["id"], $conn);
-//     }
+$result = $conn->query("SELECT * FROM donor");
+if ($result)
+    while ($row = mysqli_fetch_assoc($result)) {
+        calculate($row["id"], $conn);
+    }
 #endregion

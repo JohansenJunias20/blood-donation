@@ -3,6 +3,8 @@ import numpy
 import sklearn
 import pathlib
 import pickle
+
+from sklearn.cluster import KMeans
 app = Flask(__name__)
 
 loaded_model = pickle.load(open(str(pathlib.Path().resolve()) + "/model", 'rb'))
@@ -10,11 +12,18 @@ loaded_model = pickle.load(open(str(pathlib.Path().resolve()) + "/model", 'rb'))
 @app.route("/predict")
 def hello_world():
     args = request.args.to_dict()
-    input1 = float(args["p1"]) # float tidak boleh di int kan
-    input2 = float(args["p2"])
-    input3 = float(args["p3"])
-    input4 = float(args["p4"])
+    # todo 1: input hanya ada 3. interval keseluruhan, total donor kesluruhan, riwayat waktu donor keseluruhan
+    input1 = float(args["p1"]) # interval kesluruhan
+    input2 = float(args["p2"]) # interval sekarang
+    input3 = float(args["p3"]) # total donor keseluruhan
+    input4 = float(args["p4"]) # total donor sekarang
+    # todo 2: gunakan k means untuk membedakan riwayat waktu donor keseluruan menjadi 2 bagian
+    # bagian yang ke 2 adalah yang dipakai, panjang dari kelompok ke 2 itu adalah total donor sekarnag
+    # sedangkan interval skearang didapat dari waktu pertama dari kelompok 2 sampai sekarang dalam minggu dibagi total donor sekarang
+    # kmeans = KMeans(n_clusters=2, random_state=0).fit(X)
     inputs = [[input1,input2,input3,input4]]
+    # input disini adalah array dari waktu donor
+    # write k means model from sklearn library
 
     result = loaded_model.predict(inputs)
     return str(result[0])
@@ -43,3 +52,4 @@ set_interval(refresh,60)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80) # when debug mode port is 5000
+

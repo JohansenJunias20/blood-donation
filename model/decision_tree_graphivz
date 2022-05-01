@@ -1,16 +1,20 @@
 digraph Tree {
 node [shape=box, style="filled", color="black"] ;
-0 [label="Mean Interval keseluruhan <= 15.979\ngini = 0.493\nsamples = 1000\nvalue = [441, 559]\nclass = Aktif", fillcolor="#d5eafa"] ;
-1 [label="Total Donor keseluruhan <= 1.5\ngini = 0.111\nsamples = 544\nvalue = [32, 512]\nclass = Aktif", fillcolor="#45a3e7"] ;
+0 [label="Mean Interval keseluruhan <= 15.977\ngini = 0.49\nsamples = 1000\nvalue = [430, 570]\nclass = Aktif", fillcolor="#cee7f9"] ;
+1 [label="Total Donor keseluruhan <= 1.5\ngini = 0.137\nsamples = 527\nvalue = [39, 488]\nclass = Aktif", fillcolor="#49a5e7"] ;
 0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
-2 [label="gini = 0.0\nsamples = 32\nvalue = [32, 0]\nclass = non Aktif", fillcolor="#e58139"] ;
+2 [label="gini = 0.0\nsamples = 39\nvalue = [39, 0]\nclass = non Aktif", fillcolor="#e58139"] ;
 1 -> 2 ;
-3 [label="gini = 0.0\nsamples = 512\nvalue = [0, 512]\nclass = Aktif", fillcolor="#399de5"] ;
+3 [label="gini = 0.0\nsamples = 488\nvalue = [0, 488]\nclass = Aktif", fillcolor="#399de5"] ;
 1 -> 3 ;
-4 [label="Total Donor terbaru <= 1.5\ngini = 0.185\nsamples = 456\nvalue = [409, 47]\nclass = non Aktif", fillcolor="#e88f50"] ;
+4 [label="Total Donor terbaru <= 1.5\ngini = 0.287\nsamples = 473\nvalue = [391, 82]\nclass = non Aktif", fillcolor="#ea9b63"] ;
 0 -> 4 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
-5 [label="gini = 0.0\nsamples = 409\nvalue = [409, 0]\nclass = non Aktif", fillcolor="#e58139"] ;
+5 [label="gini = 0.0\nsamples = 388\nvalue = [388, 0]\nclass = non Aktif", fillcolor="#e58139"] ;
 4 -> 5 ;
-6 [label="gini = 0.0\nsamples = 47\nvalue = [0, 47]\nclass = Aktif", fillcolor="#399de5"] ;
+6 [label="Mean Interval terbaru <= 15.75\ngini = 0.068\nsamples = 85\nvalue = [3, 82]\nclass = Aktif", fillcolor="#40a1e6"] ;
 4 -> 6 ;
+7 [label="gini = 0.0\nsamples = 82\nvalue = [0, 82]\nclass = Aktif", fillcolor="#399de5"] ;
+6 -> 7 ;
+8 [label="gini = 0.0\nsamples = 3\nvalue = [3, 0]\nclass = non Aktif", fillcolor="#e58139"] ;
+6 -> 8 ;
 }

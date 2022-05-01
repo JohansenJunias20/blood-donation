@@ -7,8 +7,10 @@ else
 $nilai = "SELECT * FROM donor WHERE id = '$id[id]'";
 $resultid = mysqli_query($conn, $nilai)->fetch_all(MYSQLI_ASSOC);
 
-$nilai2 = "SELECT * FROM transaksi WHERE id_pendonor = '$id[id]'";
+$nilai2 = "SELECT *,UNIX_TIMESTAMP(tanggal) unix  FROM transaksi WHERE id_pendonor = '$id[id]'";
 $resulttransaksi = mysqli_query($conn, $nilai2)->fetch_all(MYSQLI_ASSOC);
+$sql = "SELECT UNIX_TIMESTAMP(tanggal) FROM TRANSAKSI WHERE ID_PENDONOR = '$id[id]'";
+$resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
 ?>
 
 <!DOCTYPE html>
@@ -270,8 +272,11 @@ $resulttransaksi = mysqli_query($conn, $nilai2)->fetch_all(MYSQLI_ASSOC);
                             </thead>
                             <tbody>
                                 <?php
+                                $unix_dates = array_map(fn ($x) => strtotime($x["tanggal"]), $resulttransaksi);
+                                $result_cluster = explode( ",",cluster($resultunix));
+                                $i = 0;
                                 foreach ($resulttransaksi as $key => $value) { ?>
-                                    <tr>
+                                    <tr style="background-color: <?= $result_cluster[$i] == "old" ? "#FFCCCC" : "#C4FFFC" ?>">
                                         <td>
                                             <?php
                                             echo $value['id'];
@@ -289,8 +294,14 @@ $resulttransaksi = mysqli_query($conn, $nilai2)->fetch_all(MYSQLI_ASSOC);
                                             echo $value['tanggal'];
                                             ?>
                                         </td>
+                                        <td>
+                                            <?php
+                                            echo $result_cluster[$i];
+                                            ?>
+                                        </td>
                                     </tr>
                                 <?php
+                                    $i++;
                                 }
                                 ?>
                             </tbody>

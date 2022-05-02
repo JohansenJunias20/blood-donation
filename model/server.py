@@ -1,3 +1,4 @@
+import time
 import requests
 import threading
 import numpy as np
@@ -31,7 +32,8 @@ def hello_world():
     # todo 1: input hanya ada 3. interval keseluruhan, total donor kesluruhan, riwayat waktu donor keseluruhan
     input1 = float(args["p1"])  # interval kesluruhan
     input2 = float(args["p2"])  # total donor keseluruhan
-    input3 = np.array(args["p3"].split(",")).reshape(-1, 1) # riwayat waktu donor keseluruhan
+    # riwayat waktu donor keseluruhan
+    input3 = np.array(args["p3"].split(",")).reshape(-1, 1)
     # todo 2: gunakan k means untuk membedakan riwayat waktu donor keseluruan menjadi 2 bagian
     # bagian yang ke 2 adalah yang dipakai, panjang dari kelompok ke 2 itu adalah total donor sekarnag
     # sedangkan interval skearang didapat dari waktu pertama dari kelompok 2 sampai sekarang dalam minggu dibagi total donor sekarang
@@ -62,14 +64,14 @@ def hello_world():
     # return "test"
     inputs = [[input1, interval_now, input2, totaldonor_now]]
     # return ','.join(str(e) for e in inputs)
-    # return f"""weeks_now: {weeks_now}, interval_now: {interval_now}, 
-    # totaldonor_now: {totaldonor_now}, len label0: {len(label0)}, len label1: {len(label1)}, 
-    # cluster_now :{0 if min_tanggal_0 > min_tanggal_1 else 1}, 
-    # cluster0:  [{','.join(str(e) for e in label0)}], 
-    # cluster1: [{','.join(str(e) for e in label1)}], 
+    # return f"""weeks_now: {weeks_now}, interval_now: {interval_now},
+    # totaldonor_now: {totaldonor_now}, len label0: {len(label0)}, len label1: {len(label1)},
+    # cluster_now :{0 if min_tanggal_0 > min_tanggal_1 else 1},
+    # cluster0:  [{','.join(str(e) for e in label0)}],
+    # cluster1: [{','.join(str(e) for e in label1)}],
     # min_tanggal_now: {min_tanggal_now},
     #  min_tanggal_0: {min_tanggal_0},
-    #   min_tanggal_1: {min_tanggal_1}, 
+    #   min_tanggal_1: {min_tanggal_1},
     #   now: {datetime.datetime.now().timestamp()}
     #   labels: [{','.join(str(e) for e in labels)}]"""
     # input disini adalah array dari waktu donor
@@ -79,10 +81,14 @@ def hello_world():
     return str(result[0])
 
 # dipanggil oleh search.php untuk menvisualisasi 2 cluster yang baru warna biru yang lama warna merah
+
+
 @app.route("/cluster")
 def clustering():
     args = request.args.to_dict()
-    input = np.array(args["p1"].split(",")).reshape(-1, 1) # riwayat waktu donor keseluruhan
+    # riwayat waktu donor keseluruhan
+    input = np.array(args["p1"].split(",") + [int(time.time())]).reshape(-1, 1)
+
     kmeans = KMeans(n_clusters=2, random_state=0).fit(input)
     # result dari kmeans, array terdiri dari 0 dan 1
     labels = kmeans.labels_
@@ -91,12 +97,14 @@ def clustering():
     new = 1 if labels[0] == 0 else 0
     old = 1 if labels[0] == 1 else 0
     result = ["old" if label == old else "new" for label in labels]
+    result.pop(-1)  # remove the last index
     return ','.join(str(e) for e in result)
     for i, label in enumerate(labels):
         if label == 0:
             label0.append(input3[i])
         else:
             label1.append(input3[i])
+
 
 def set_interval(func, sec):
     def func_wrapper():

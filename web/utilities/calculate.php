@@ -52,10 +52,10 @@ function calculate($id, $conn)
     } else {
         $data = [];
     }
-    echo "response: ".predict($interval, $totaldonor, $data);
-    // $result = intval(predict($interval, $totaldonor, $data));
-    // $sql = "UPDATE DONOR SET aktif = $result where id = $id";
-    // $conn->query($sql);
+    // echo "response: ".predict($interval, $totaldonor, $data);
+    $result = intval(predict($interval, $totaldonor, $data));
+    $sql = "UPDATE DONOR SET aktif = $result where id = $id";
+    $conn->query($sql);
 }
 
 $result = $conn->query("SELECT * FROM donor");

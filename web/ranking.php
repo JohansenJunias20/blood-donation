@@ -9,7 +9,11 @@
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  
+      <script src="js/bootstrap.bundle.min.js.download"></script>
+      <script src="js/feather.min.js.download"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="js/app.js"></script>
+      <script>load_ranking()</script>
     <style>
         * {
             box-sizing: border-box;
@@ -130,7 +134,7 @@
       }
     </style>
   </head>
-
+      
     <body>
         <header>
             <a href="profile.php"><img src="Asset/Icon.png" width="130px"alt="" class="logo"></a>
@@ -144,38 +148,57 @@
         </header>
         <br>
         <h2 style="text-align: center;">Ranking</h2>
+        <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+              <section id="filters" data-auto-filter="true">
+                <h5>Filters</h5>
 
-        <table class="center">
-            <tr>
-                <th>ID</th>
-                <th>Nama</th>
-                <th>Email</th>
-                <th>Aktif</th>
-                <th>Skor</th>
-            </tr>
+                <section class="mb-4" data-filter="condition">
+                  
+                  <label for="gol_darah"><h6 class="font-weight-bold mb-3">Golongan Darah</h6></label>
+                  <select name="gol_darah" id="gol_darah">
+                      <option value="0" selected>None</option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="AB">AB</option>
+                      <option value="O">O</option>
+                  </select>
+                  
+                  <br>
+
+                  <label for="resus"><h6 class="font-weight-bold mb-3"><h6 class="font-weight-bold mb-3">Rhesus</h6></h6></label>
+                  <select name="resus" id="resus">
+                      <option value="0" selected>None</option>
+                      <option value="+">+</option>
+                      <option value="-">-</option>
+                  </select>
+                  
+                </section>
+                
+                <button type="submit" class="col btn btn-danger" onclick="updateFilter()">Submit</button>
+            </section>
+          </div>
+          
+          <div class="col-md-8">
+            <table class="center">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nama</th>
+                    <th>Golongan Darah</th>
+                    <th>Rhesus</th>
+                    <th>Email</th>
+                    <th>Aktif</th>
+                    <th>Skor</th>
+                </tr>
+                </thead>
+                <tbody id="rankingTable">
+                </tbody>
             
-            <?php
-            $conn = mysqli_connect("db","root","manpro4521","manpro");
-            if($conn-> connect_error){
-                die("Connection failed:". $conn-> connect_error);
-            }
-
-            $sql = "SELECT id, nama, email, aktif from donor";
-            $result = $conn-> query($sql);
-
-            if ($result-> num_rows > 0){
-                while ($row = $result-> fetch_assoc()){
-                    echo "<tr><td>". $row["id"] ."</td><td>". $row["nama"] ."</td><td>". $row["email"] ."</td><td>". $row["aktif"] ."</td></tr>";
-                }
-                echo "</table>";
-            }
-            else{
-                echo "0 result";
-            }
-
-            $conn->close()
-            ?>
-        </table>
+            </table>
+          </div> 
+        
 
     </body>
 </html>

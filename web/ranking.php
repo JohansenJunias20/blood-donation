@@ -12,6 +12,7 @@
       <script src="js/bootstrap.bundle.min.js.download"></script>
       <script src="js/feather.min.js.download"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="js/livesearch.js"></script>
       <script src="js/app.js"></script>
       <script>load_ranking()</script>
     <style>
@@ -153,7 +154,12 @@
           <div class="col-md-3">
               <section id="filters" data-auto-filter="true">
                 <h5>Filters</h5>
-
+                            
+                <label for="LiveSearch">Search</label>
+                            <input type="text" name="LiveSearch" id="livesearch" onkeyup="LiveSearch('livesearch','tableRanking')">
+                <br>
+                <br>
+                <p id="rowCount"></p>
                 <section class="mb-4" data-filter="condition">
                   
                   <label for="gol_darah"><h6 class="font-weight-bold mb-3">Golongan Darah</h6></label>
@@ -173,7 +179,7 @@
                       <option value="+">+</option>
                       <option value="-">-</option>
                   </select>
-                  
+                
                 </section>
                 
                 <button type="submit" class="col btn btn-danger" onclick="updateFilter()">Submit</button>
@@ -181,7 +187,7 @@
           </div>
           
           <div class="col-md-8">
-            <table class="center">
+            <table class="center" id="tableRanking">
                 <thead>
                 <tr>
                     <th>ID</th>

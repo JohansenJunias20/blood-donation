@@ -14,11 +14,13 @@ $var = "LOGIN GAGAL";
 if($login->num_rows > 0)
 {
     header("Location: profile.php");  
+    echo "redirected";
 }
 else
 {
     
 }
-$connect->close();
+$conn->close();
+echo "test";
 ?>
 

@@ -65,6 +65,8 @@ services:
     #   FLASK_ENV: development
     #   FLASK_APP: ./server.py
     # command: flask run
+    ports:
+      - 5000:80
     command: python3 server.py
     deploy:
       resources:

@@ -10,6 +10,7 @@ import pathlib
 import pickle
 
 from sklearn.cluster import KMeans
+from sklearn.model_selection import StratifiedKFold
 
 # function to find different weeks between 2 unix timestamp
 
@@ -33,36 +34,38 @@ def hello_world():
     input1 = float(args["p1"])  # interval kesluruhan
     input2 = float(args["p2"])  # total donor keseluruhan
     # riwayat waktu donor keseluruhan
-    input3 = np.array(args["p3"].split(",")).reshape(-1, 1)
-    # todo 2: gunakan k means untuk membedakan riwayat waktu donor keseluruan menjadi 2 bagian
-    # bagian yang ke 2 adalah yang dipakai, panjang dari kelompok ke 2 itu adalah total donor sekarnag
-    # sedangkan interval skearang didapat dari waktu pertama dari kelompok 2 sampai sekarang dalam minggu dibagi total donor sekarang
-    # print(input3)
-    kmeans = KMeans(n_clusters=2, random_state=0).fit(input3)
-    # result dari kmeans, array terdiri dari 0 dan 1
-    labels = kmeans.labels_
-    # mengroup kan mana yang cluster 0 mana yang cluster 1
-    label0 = []
-    label1 = []
-    for i, label in enumerate(labels):
-        if label == 0:
-            label0.append(input3[i])
-        else:
-            label1.append(input3[i])
-    # mencari tanggal pertama dari cluster yang terbaru
-    min_tanggal_0 = min(label0)
-    min_tanggal_1 = min(label1)
-    min_tanggal_now = max(min_tanggal_0, min_tanggal_1)
+    input3 =args["p3"].split(",")
+    input3 =  [a for a in input3 if a != ""] 
+    input3 = np.array(input3).reshape(-1,1)
+    if len(input3) != 1:
+        kmeans = KMeans(n_clusters=2, random_state=0).fit(input3)
+        # result dari kmeans, array terdiri dari 0 dan 1
+        labels = kmeans.labels_
+        # mengroup kan mana yang cluster 0 mana yang cluster 1
+        label0 = []
+        label1 = []
+        for i, label in enumerate(labels):
+            if label == 0:
+                label0.append(input3[i])
+            else:
+                label1.append(input3[i])
+        # mencari tanggal pertama dari cluster yang terbaru
+        min_tanggal_0 = min(label0)
+        min_tanggal_1 = min(label1)
+        min_tanggal_now = max(min_tanggal_0, min_tanggal_1)
 
-    # karena k means membagi menjadi 2 grup yaitu now dan old kita harus tau yang 0 itu new atau old
-    cluster_now = label0 if min_tanggal_0 > min_tanggal_1 else label1
-    weeks_now = abs(find_different_weeks(min_tanggal_now,
-                    datetime.datetime.now().timestamp()))
-    interval_now = weeks_now/len(cluster_now)
-    totaldonor_now = len(cluster_now)
-    result = kmeans.predict(input3)
-    # return "test"
-    inputs = [[input1, interval_now, input2, totaldonor_now]]
+        # karena k means membagi menjadi 2 grup yaitu now dan old kita harus tau yang 0 itu new atau old
+        cluster_now = label0 if min_tanggal_0 > min_tanggal_1 else label1
+        weeks_now = abs(find_different_weeks(min_tanggal_now,
+                        datetime.datetime.now().timestamp()))
+        interval_now = weeks_now/len(cluster_now)
+        totaldonor_now = len(cluster_now)
+        # result = kmeans.predict(input3)
+        # return "test"
+        inputs = [[input1, interval_now, input2, totaldonor_now]]
+    else:
+        inputs = [[input1, 0, input2, 0]]
+
     # return ','.join(str(e) for e in inputs)
     # return f"""weeks_now: {weeks_now}, interval_now: {interval_now},
     # totaldonor_now: {totaldonor_now}, len label0: {len(label0)}, len label1: {len(label1)},
@@ -86,9 +89,14 @@ def hello_world():
 @app.route("/cluster")
 def clustering():
     args = request.args.to_dict()
+    delimiter = ","
+    if "del" in args:
+        delimiter = args["del"]
     # riwayat waktu donor keseluruhan
-    input = np.array(args["p1"].split(",") + [int(time.time())]).reshape(-1, 1)
-
+    strArgs = [a for a in args["p1"].split(",") if a != ""]
+    print(strArgs)
+    input = np.array(strArgs + [int(time.time())]).reshape(-1, 1)
+    
     kmeans = KMeans(n_clusters=2, random_state=0).fit(input)
     # result dari kmeans, array terdiri dari 0 dan 1
     labels = kmeans.labels_
@@ -98,7 +106,7 @@ def clustering():
     old = 1 if labels[0] == 1 else 0
     result = ["old" if label == old else "new" for label in labels]
     result.pop(-1)  # remove the last index
-    return ','.join(str(e) for e in result)
+    return delimiter.join(str(e) for e in result)
     for i, label in enumerate(labels):
         if label == 0:
             label0.append(input3[i])
@@ -124,8 +132,9 @@ def refresh():
     # print(f"response from apache: {r.text()}")
 
 
-set_interval(refresh, 60)
+# set_interval(refresh, 60)
 
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)  # when debug mode port is 5000
+    # app.run(host='0.0.0.0')  # when debug mode port is 5000

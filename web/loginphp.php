@@ -13,7 +13,7 @@ $var = "LOGIN GAGAL";
 
 if($login->num_rows > 0)
 {
-    header("Location: profile.php");  
+    header("Location: list.php");  
     echo "redirected";
 }
 else

@@ -61,7 +61,7 @@
           display:flex;
           justify-content: space-between;
           align-items: center;
-          padding: 20px 10%;
+          padding: 10px 10%;
           background-color: #BB002D;
       }
 
@@ -95,10 +95,10 @@
       }
 
       button {
-          padding: 9px 25px;
+          padding: 9px 20px;
           background-color: rgba(220,220,220,1);
           border: none;
-          border-radius: 50px;
+          border-radius: 30px;
           cursor: pointer;
           transition: all 0.3s ease 0;
       }
@@ -226,7 +226,7 @@
 
   <body>
     <header>
-      <a href="profile.php"><img src="Asset/Icon.png" width="130px"alt="" class="logo"></a>
+      <a href="list.php"><img src="Asset/Icon.png" width="120px"alt="" class="logo"></a>
        
       <a href="Login.php" class="cta"><button>Log Out</button></a>
     </header>

@@ -114,8 +114,7 @@
       <a href="profile.php"><img src="Asset/Icon.png" width="130px"alt="" class="logo"></a>
         <nav>
           <ul class="nav_link">
-            <li><a href="list.php">Pendonor</a></li>
-            <li><a href="#">Jadwal</a></li>
+            <li><a href="list.php">Donor</a></li>
           </ul>
         </nav>
       <a href="Login.php" class="cta"><button>Log Out</button></a>
@@ -163,20 +162,20 @@
 
             <form id="form_daftar" method="post" action="/api/create.php">
                 <div class="modal-body mx-3">
-                    <label>Nama</label>  
+                    <label>Name</label>  
                     <input name="name" id="name" class="form-control" required>  
                     </br>  
 
-                    <label>Jenis Kelamin</label>  
+                    <label>Gender</label>  
                     <select name="gender" id="gender" class="form-control">  
-                        <option value="Male">Laki-Laki</option>  
-                        <option value="Female">Perempuan</option>  
+                        <option value="Laki-Laki">Male</option>  
+                        <option value="Perempuan">Female</option>  
                     </select>  
                     </br>  
 
                     <div class='form-row'>
                         <div class='col-xs-4 form-group'>
-                            <label>Gol. Darah</label>  
+                            <label>Blood Type</label>  
                             <input type="text" name="bloodtype" id="bloodtype" size='2' class="form-control" required>      
                         </div>
                         <div class='col-xs-4 form-group '>
@@ -192,7 +191,7 @@
                     <input name="email" id="email" class="form-control" required>  
                     </br>
 
-                    <label>No.Telp</label>  
+                    <label>Phone Number</label>  
                     <input name="phone" id="phone" class="form-control" required>  
                     </br>
               

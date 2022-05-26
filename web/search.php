@@ -142,7 +142,7 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
 
     <div class="search-container" style="padding:20px;">
         <form action="searchphp.php" method="post">
-            <input type="text" placeholder="Masukkan ID" name="search" id="search" style="width:600px; height: 30px; padding: 10px;">
+            <input type="text" placeholder="Insert ID" name="search" id="search" style="width:600px; height: 30px; padding: 10px;">
 
         </form>
 
@@ -172,7 +172,7 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                                             <tr>
                                                 <td class="textt">Gender</td>
                                                 <td>:</td>
-                                                <td><?php echo $resultid[0]['jenis kelamin']; ?></td>
+                                                <td><?= $resultid[0]['jenis kelamin'] == 'Laki-Laki' ? 'Male' : 'Female'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="textt">Blood Type</td>
@@ -202,13 +202,13 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                                                     $result = $conn->query("select count(*) as total from transaksi where id_pendonor = $id[id]");
                                                     $row = mysqli_fetch_assoc($result);
                                                     echo $row["total"];
-                                                    ?> kali</td>
+                                                    ?> times</td>
                                             </tr>
                                             <tr>
                                                 <td class="textt">Date Joined</td>
                                                 <td>:</td>
                                                 <td><?php
-                                                    $result = $conn->query("select concat( TIMESTAMPDIFF(WEEK, MIN(tanggal), now()),' minggu atau ', TIMESTAMPDIFF(MONTH, MIN(tanggal), now()), ' bulan' ) as firstime from transaksi where id_pendonor = $id[id]");
+                                                    $result = $conn->query("select concat( TIMESTAMPDIFF(WEEK, MIN(tanggal), now()),' weeks or ', TIMESTAMPDIFF(MONTH, MIN(tanggal), now()), ' month' ) as firstime from transaksi where id_pendonor = $id[id]");
                                                     $row = mysqli_fetch_assoc($result);
                                                     echo $row["firstime"];
                                                     ?></td>
@@ -219,7 +219,7 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                                                 <td><?php
                                                     $result = $conn->query("select aktif from donor where id = $id[id]");
                                                     $row = mysqli_fetch_assoc($result);
-                                                    echo $row["aktif"] == 1 ? "Aktif" : "Tidak Aktif";
+                                                    echo $row["aktif"] == 1 ? "Active" : "Inactive";
                                                     ?></td>
                                             </tr>
                                             <tr>
@@ -325,24 +325,24 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                     <label>ID</label>
                     <input readonly name="id" id="id" value="<?= $resultid[0]['id'] ?>" class="form-control">
                     </br>
-                    <label>Nama</label>
+                    <label>Name</label>
                     <input name="name" id="name" value="<?= $resultid[0]['nama'] ?>" class="form-control">
                     </br>
-                    <label>Jenis Kelamin</label>
+                    <label>Gender</label>
                     <select name="gender" id="gender" value="<?= $resultid[0]['jenis kelamin'] ?>" class="form-control">
-                        <option value="Male">Laki-Laki</option>
-                        <option value="Female">Perempuan</option>
+                        <option value="Laki-Laki">Male</option>
+                        <option value="Perempuan">Female</option>
                     </select>
                     </br>
 
                     <div class='form-row'>
                         <div class='col-xs-4 form-group'>
-                            <label>Gol. Darah</label>
+                            <label>Blood Type</label>
                             <input type="text" name="bloodtype" value="<?= $resultid[0]['golongan darah'] ?>" id="bloodtype" size='2' class="form-control">
                         </div>
                         <div class='col-xs-4 form-group '>
                             <label class='control-label'>Rhesus</label>
-                            <select name="rhesus" id="rhesus"  class="form-control">
+                            <select name="rhesus" id="rhesus" class="form-control">
                                 <option value="+">+</option>
                                 <option value="-">-</option>
                             </select>
@@ -353,7 +353,7 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                     <input name="email" id="email" value="<?= $resultid[0]['email'] ?>" class="form-control">
                     </br>
 
-                    <label>No.Telp</label>
+                    <label>Phone Number</label>
                     <input name="phone" id="phone" value="<?= $resultid[0]['nomor HP'] ?>" class="form-control">
                     </br>
 

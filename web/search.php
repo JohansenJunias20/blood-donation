@@ -202,13 +202,13 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                                                     $result = $conn->query("select count(*) as total from transaksi where id_pendonor = $id[id]");
                                                     $row = mysqli_fetch_assoc($result);
                                                     echo $row["total"];
-                                                    ?> kali</td>
+                                                    ?> times</td>
                                             </tr>
                                             <tr>
                                                 <td class="textt">Date Joined</td>
                                                 <td>:</td>
                                                 <td><?php
-                                                    $result = $conn->query("select concat( TIMESTAMPDIFF(WEEK, MIN(tanggal), now()),' minggu atau ', TIMESTAMPDIFF(MONTH, MIN(tanggal), now()), ' bulan' ) as firstime from transaksi where id_pendonor = $id[id]");
+                                                    $result = $conn->query("select concat( TIMESTAMPDIFF(WEEK, MIN(tanggal), now()),' week or ', TIMESTAMPDIFF(MONTH, MIN(tanggal), now()), ' month' ) as firstime from transaksi where id_pendonor = $id[id]");
                                                     $row = mysqli_fetch_assoc($result);
                                                     echo $row["firstime"];
                                                     ?></td>
@@ -219,7 +219,7 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                                                 <td><?php
                                                     $result = $conn->query("select aktif from donor where id = $id[id]");
                                                     $row = mysqli_fetch_assoc($result);
-                                                    echo $row["aktif"] == 1 ? "Aktif" : "Tidak Aktif";
+                                                    echo $row["aktif"] == 1 ? "Active" : "Non-Active";
                                                     ?></td>
                                             </tr>
                                             <tr>
@@ -267,6 +267,7 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                                     <th>ID </th>
                                     <th>Donor's ID</th>
                                     <th>Date</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -322,11 +323,11 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
 
             <form id="form_daftar" method="post">
                 <div class="modal-body mx-3">
-                    <label>Nama</label>
+                    <label>Name</label>
                     <input name="name" id="name" class="form-control">
                     </br>
 
-                    <label>Jenis Kelamin</label>
+                    <label>Sex</label>
                     <select name="gender" id="gender" class="form-control">
                         <option value="Male">Laki-Laki</option>
                         <option value="Female">Perempuan</option>
@@ -334,8 +335,8 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                     </br>
 
                     <div class='form-row'>
-                        <div class='col-xs-4 form-group'>
-                            <label>Gol. Darah</label>
+                        <div class='col-ss-4 form-group'>
+                            <label>Blood Type</label>
                             <input type="text" name="bloodtype" id="bloodtype" size='2' class="form-control">
                         </div>
                         <div class='col-xs-4 form-group '>
@@ -351,14 +352,14 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                     <input name="email" id="email" class="form-control">
                     </br>
 
-                    <label>No.Telp</label>
+                    <label>Phone</label>
                     <input name="phone" id="phone" class="form-control">
                     </br>
 
                     <div class="modal-footer">
                         <div id="keterangan"></div>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" id="submit_daftar" name="submit_daftar" class="btn btn-success"><i class="lnr lnr-plus-circle"></i> Edit!</button>
+                        <button type="submit" id="submit_daftar" name="submit_daftar" class="btn btn-danger"><i class="lnr lnr-plus-circle"></i> Edit!</button>
                     </div>
             </form>
         </div>

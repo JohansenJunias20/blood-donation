@@ -162,11 +162,11 @@
 
             <form id="form_daftar" method="post">
                 <div class="modal-body mx-3">
-                    <label>Nama</label>  
+                    <label>Name</label>  
                     <input name="name" id="name" class="form-control" required>  
                     </br>  
 
-                    <label>Jenis Kelamin</label>  
+                    <label>Sex</label>  
                     <select name="gender" id="gender" class="form-control">  
                         <option value="Male">Laki-Laki</option>  
                         <option value="Female">Perempuan</option>  
@@ -174,8 +174,8 @@
                     </br>  
 
                     <div class='form-row'>
-                        <div class='col-xs-4 form-group'>
-                            <label>Gol. Darah</label>  
+                        <div class='col-xs-3 form-group'>
+                            <label>Blood Type</label>  
                             <input type="text" name="bloodtype" id="bloodtype" size='2' class="form-control" required>      
                         </div>
                         <div class='col-xs-4 form-group '>
@@ -191,14 +191,14 @@
                     <input name="email" id="email" class="form-control" required>  
                     </br>
 
-                    <label>No.Telp</label>  
+                    <label>Phone</label>  
                     <input name="phone" id="phone" class="form-control" required>  
                     </br>
               
                 <div class="modal-footer">
                     <div id="keterangan"></div>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" id="submit_daftar" name="submit_daftar" class="btn btn-success"><i class="lnr lnr-plus-circle"></i> Create!</button>
+                    <button type="submit" id="submit_daftar" name="submit_daftar" class="btn btn-danger"><i class="lnr lnr-plus-circle"></i> Create!</button>
                 </div>
             </form>
         </div>

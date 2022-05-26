@@ -25,27 +25,6 @@
           justify-content: center;
           margin-top: 100px;
       }
-      .card{
-          background: #BB002D;
-          width: 320px;
-          text-align: center;
-          margin: 20px;
-          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45);
-      }
-      .card-body{
-          background: white;
-      }
-
-      .card-title{
-          background: white;
-      }
-      
-      .card-img-top{
-          height: 270px;
-      }
-      .card-footer{
-          background: #BB002D;
-      }
       li, a{
               font-size: 20px;
               color: #edf0f1;
@@ -221,73 +200,96 @@
       
         }
       }
+
+      h2{
+        text-align: center;
+        color: black;
+      }
+
+      #dashboard{
+        margin:25px 0px;
+        padding: 10px 0px;
+      }
     </style>
   </head>
 
   <body>
     <header>
-      <a href="list.php"><img src="Asset/Icon.png" width="120px"alt="" class="logo"></a>
-       
-      <a href="Login.php" class="cta"><button>Log Out</button></a>
+        <img src="Asset/Icon.png" width="130px"alt="" class="logo">
+        <a href="#">Home</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#aboutus">About Us</a>
+        <a href="#">Contact</a>
+        <a href="Login.php" class="cta"><button>Log Out</button></a>
     </header>
-    <section class="container">
-      <!-- create profile -->
-      <div class="our_solution_category">
-        <div class="solution_cards_box">
-          <div class="solution_card">
-            <div class="hover_color_bubble"></div>
-              <img class="so_top_icon" src="Asset/create.jpg" alt="Card image cap">
-            <div class="solu_title">
-              <h3>Create Profile</h3>
+
+    <div style="background-image: url('Asset/banner.jpg'); background-repeat: no-repeat; background-size:cover; background-position:center;height: 500px;"></div>    
+    <section id="dashboard" style="background-image: url('Asset/indomap2.svg'); background-repeat: no-repeat; background-position:center; height: 500px;">
+    <h2>Dashboard</h2>
+      <section class="container">
+        
+        <!-- create profile -->
+        <div class="our_solution_category">
+          <div class="solution_cards_box">
+            <div class="solution_card">
+              <div class="hover_color_bubble"></div>
+                <img class="so_top_icon" src="Asset/create.jpg" alt="Card image cap">
+              <div class="solu_title">
+                <h3>Create Profile</h3>
+              </div>
+              <div class="solu_description">
+                <p>
+                  Create New Donor Profile.
+                </p>
+                <button data-toggle="modal" data-target="#createModal" class="btn btn-light">Create Profile</button>
+              </div>
             </div>
-            <div class="solu_description">
-              <p>
-                Create New Donor Profile.
-              </p>
-              <button data-toggle="modal" data-target="#createModal" class="btn btn-light">Create Profile</button>
             </div>
-          </div>
           </div>
         </div>
-      </div>
-      <!-- search -->
-      <div class="our_solution_category">
-        <div class="solution_cards_box">
-          <div class="solution_card">
-            <div class="hover_color_bubble"></div>
-              <img class="so_top_icon" src="Asset/search.png" alt="Card image cap">
-            <div class="solu_title">
-              <h3>Search Profile</h3>
+        <!-- search -->
+        <div class="our_solution_category">
+          <div class="solution_cards_box">
+            <div class="solution_card">
+              <div class="hover_color_bubble"></div>
+                <img class="so_top_icon" src="Asset/search.png" alt="Card image cap">
+              <div class="solu_title">
+                <h3>Search Profile</h3>
+              </div>
+              <div class="solu_description">
+                <p>
+                  Search Donor Profile.
+                </p>
+                <a href="search.php" class="search_btn"><button>Search</button></a>
+              </div>
             </div>
-            <div class="solu_description">
-              <p>
-                Search Donor Profile.
-              </p>
-              <a href="search.php" class="search_btn"><button>Search</button></a>
             </div>
-          </div>
           </div>
         </div>
-      </div>
-      <!-- ranking -->
-      <div class="our_solution_category">
-        <div class="solution_cards_box">
-          <div class="solution_card">
-            <div class="hover_color_bubble"></div>
-              <img class="so_top_icon" src="Asset/ranking2.png" alt="Card image cap">
-            <div class="solu_title">
-              <h3>Ranking</h3>
+        <!-- ranking -->
+        <div class="our_solution_category">
+          <div class="solution_cards_box">
+            <div class="solution_card">
+              <div class="hover_color_bubble"></div>
+                <img class="so_top_icon" src="Asset/ranking2.png" alt="Card image cap">
+              <div class="solu_title">
+                <h3>Ranking</h3>
+              </div>
+              <div class="solu_description">
+                <p>
+                  View Donor Rankings.
+                </p>
+                <a href="ranking.php" class="ranking_btn"><button>View Ranking</button></a>
+              </div>
             </div>
-            <div class="solu_description">
-              <p>
-                View Donor Rankings.
-              </p>
-              <a href="ranking.php" class="ranking_btn"><button>View Ranking</button></a>
             </div>
-          </div>
           </div>
         </div>
-      </div>
+      </section>
+    </section>
+    
+    <section id="aboutus">
+
     </section>
 
     <!-- Modal -->

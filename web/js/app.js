@@ -14,12 +14,14 @@ function load_ranking(){
                 var col4 = $("<td>" + ranking['resus'] + "</td>");
                 var col5 = $("<td>" + ranking['email'] + "</td>");
                 var col6 = $("<td>" + ranking['aktif'] + "</td>");           
+                var col7 = $("<td>" + ranking['score'] + "</td>");           
                 col1.appendTo(row);
                 col2.appendTo(row);
                 col3.appendTo(row);
                 col4.appendTo(row);
                 col5.appendTo(row);
                 col6.appendTo(row);
+                col7.appendTo(row);
                              
                 
                 $("#rankingTable").append(row);

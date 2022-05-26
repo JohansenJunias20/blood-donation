@@ -124,11 +124,11 @@
       <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="Asset/create profile.png" alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title">Create new profile</h5>
+          <h5 class="card-title">Create New Profile</h5>
         </div>
 
         <div class="card-footer">  
-          <button data-toggle="modal" data-target="#createModal" class="btn btn-primary">Klik Disini</button>
+          <button data-toggle="modal" data-target="#createModal" class="btn btn-light">Click Here</button>
         </div>
       </div>
       <div class="card" style="width: 18rem;">
@@ -138,7 +138,7 @@
           
         </div>
         <div class="card-footer">      
-            <a href="search.php" class="btn btn-primary">Klik Disini</a>
+            <a href="search.php" class="btn btn-light">Click Here</a>
         </div>
       </div>
       <div class="card" style="width: 18rem;">
@@ -148,7 +148,7 @@
         
         </div>
         <div class="card-footer">      
-            <a href="ranking.php" class="btn btn-primary">Klik Disini</a>
+            <a href="ranking.php" class="btn btn-light">Click Here</a>
         </div>
       </div>
     </section>

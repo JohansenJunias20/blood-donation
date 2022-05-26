@@ -128,23 +128,23 @@
         <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="Asset/donor.jpg" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Profile Pendonor</h5>
-              <p class="card-text">Melihat profile pendonor, Create profil pendonor, Edit profile pendonor, History pendonor, Create transaksi pendonor.</p>       
+              <h5 class="card-title">Donor's Profile</h5>
+              <p class="card-text">check, create and search the donor's profile</p>       
             </div>
             <div class="card-footer">  
-                <a href="list.php" class="btn btn-primary">Klik Disini</a>
+                <a href="list.php" class="btn btn-light">Click Here</a>
             </div>
           </div>
-          <div class="card" style="width: 18rem;">
+          <!-- <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="Asset/kalender.jpg" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Jadwal Kegiatan Donor Darah</h5>
-              <p class="card-text">Melihat jadwal kegiatan donor darah.</p>
+              <h5 class="card-title">Blood Donation Schedules</h5>
+              <p class="card-text">See the current and upcoming Blood Donation Event</p>
             </div>
             <div class="card-footer">      
-                <a href="#" class="btn btn-primary">Klik Disini</a>
+                <a href="#" class="btn btn-primary">Click Here</a>
             </div>
-          </div>
+          </div> -->
     </section>
 
 </body>

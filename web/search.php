@@ -273,7 +273,7 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                             <tbody>
                                 <?php
                                 $unix_dates = array_map(fn ($x) => strtotime($x["tanggal"]), $resulttransaksi);
-                                $result_cluster = explode( ",",cluster($resultunix));
+                                $result_cluster = explode(",", cluster($resultunix));
                                 $i = 0;
                                 foreach ($resulttransaksi as $key => $value) { ?>
                                     <tr style="background-color: <?= $result_cluster[$i] == "old" ? "#FFCCCC" : "#C4FFFC" ?>">
@@ -321,14 +321,16 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                 <h3 class="modal-title">Edit Profile!</h3>
             </div>
 
-            <form id="form_daftar" method="post">
+            <form id="form_daftar" method="post" action="/api/edit.php">
                 <div class="modal-body mx-3">
-                    <label>Nama</label>
-                    <input name="name" id="name" class="form-control">
+                    <label>ID</label>
+                    <input readonly name="id" id="id" value="<?= $resultid[0]['id'] ?>" class="form-control">
                     </br>
-
+                    <label>Nama</label>
+                    <input name="name" id="name" value="<?= $resultid[0]['nama'] ?>" class="form-control">
+                    </br>
                     <label>Jenis Kelamin</label>
-                    <select name="gender" id="gender" class="form-control">
+                    <select name="gender" id="gender" value="<?= $resultid[0]['jenis kelamin'] ?>" class="form-control">
                         <option value="Male">Laki-Laki</option>
                         <option value="Female">Perempuan</option>
                     </select>
@@ -337,11 +339,11 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                     <div class='form-row'>
                         <div class='col-xs-4 form-group'>
                             <label>Gol. Darah</label>
-                            <input type="text" name="bloodtype" id="bloodtype" size='2' class="form-control">
+                            <input type="text" name="bloodtype" value="<?= $resultid[0]['golongan darah'] ?>" id="bloodtype" size='2' class="form-control">
                         </div>
                         <div class='col-xs-4 form-group '>
                             <label class='control-label'>Rhesus</label>
-                            <select name="rhesus" id="rhesus" class="form-control">
+                            <select name="rhesus" id="rhesus"  class="form-control">
                                 <option value="+">+</option>
                                 <option value="-">-</option>
                             </select>
@@ -349,11 +351,11 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                     </div>
 
                     <label>Email</label>
-                    <input name="email" id="email" class="form-control">
+                    <input name="email" id="email" value="<?= $resultid[0]['email'] ?>" class="form-control">
                     </br>
 
                     <label>No.Telp</label>
-                    <input name="phone" id="phone" class="form-control">
+                    <input name="phone" id="phone" value="<?= $resultid[0]['nomor HP'] ?>" class="form-control">
                     </br>
 
                     <div class="modal-footer">

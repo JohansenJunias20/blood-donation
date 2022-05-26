@@ -162,21 +162,21 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                                         <tbody>
                                             <tr>
                                                 <td>
-                                                    <h3>Profile Pendonor</h3>
+                                                    <h3>Donor's Profile</h3>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td width="45%" valign="top" class="textt">Nama</td>
+                                                <td width="45%" valign="top" class="textt">Name</td>
                                                 <td width="2%">:</td>
                                                 <td style="color: rgb(118, 157, 29); font-weight:bold"><?php echo $resultid[0]['nama']; ?></td>
                                             </tr>
                                             <tr>
-                                                <td class="textt">Jenis Kelamin</td>
+                                                <td class="textt">Gender</td>
                                                 <td>:</td>
                                                 <td><?php echo $resultid[0]['jenis kelamin']; ?></td>
                                             </tr>
                                             <tr>
-                                                <td class="textt">Gol Darah</td>
+                                                <td class="textt">Blood Type</td>
                                                 <td>:</td>
                                                 <td><?php echo $resultid[0]['golongan darah']; ?></td>
                                             </tr>
@@ -191,13 +191,13 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                                                 <td><?php echo $resultid[0]['email']; ?></td>
                                             </tr>
                                             <tr>
-                                                <td class="textt">No. Handphone</td>
+                                                <td class="textt">Phone Number</td>
                                                 <td>:</td>
                                                 <td><?php echo $resultid[0]['nomor HP']; ?></td>
                                             </tr>
                                             <hr>
                                             <tr>
-                                                <td class="textt">Total Donor</td>
+                                                <td class="textt">Total Blood Donation</td>
                                                 <td>:</td>
                                                 <td><?php
                                                     $result = $conn->query("select count(*) as total from transaksi where id_pendonor = $id[id]");
@@ -206,7 +206,7 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                                                     ?> kali</td>
                                             </tr>
                                             <tr>
-                                                <td class="textt">Tanggal Join</td>
+                                                <td class="textt">Date Joined</td>
                                                 <td>:</td>
                                                 <td><?php
                                                     $result = $conn->query("select concat( TIMESTAMPDIFF(WEEK, MIN(tanggal), now()),' minggu atau ', TIMESTAMPDIFF(MONTH, MIN(tanggal), now()), ' bulan' ) as firstime from transaksi where id_pendonor = $id[id]");
@@ -224,7 +224,7 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                                                     ?></td>
                                             </tr>
                                             <tr>
-                                                <td valign="top" class="textt"><button type="button" data-toggle="modal" data-target="#editModal" class="btn btn-primary">Edit Profile</button></td>
+                                                <td valign="top" class="textt"><button type="button" data-toggle="modal" data-target="#editModal" class="btn btn-danger">Edit Profile</button></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -266,8 +266,8 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                             <thead>
                                 <tr>
                                     <th>ID </th>
-                                    <th>ID Pendonor</th>
-                                    <th>Tanggal</th>
+                                    <th>Donor's ID</th>
+                                    <th>Date</th>
                                 </tr>
                             </thead>
                             <tbody>

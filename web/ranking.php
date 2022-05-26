@@ -162,7 +162,7 @@
                 <p id="rowCount"></p>
                 <section class="mb-4" data-filter="condition">
                   
-                  <label for="gol_darah"><h6 class="font-weight-bold mb-3">Golongan Darah</h6></label>
+                  <label for="gol_darah"><h6 class="font-weight-bold mb-3">Blood Type</h6></label>
                   <select name="gol_darah" id="gol_darah">
                       <option value="0" selected>None</option>
                       <option value="A">A</option>
@@ -191,12 +191,12 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nama</th>
-                    <th>Golongan Darah</th>
+                    <th>Name</th>
+                    <th>Blood Type</th>
                     <th>Rhesus</th>
                     <th>Email</th>
-                    <th>Aktif</th>
-                    <th>Skor</th>
+                    <th>Active</th>
+                    <th>Score</th>
                 </tr>
                 </thead>
                 <tbody id="rankingTable">

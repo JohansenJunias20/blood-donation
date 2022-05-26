@@ -134,7 +134,7 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
         <a href="profile.php"><img src="Asset/Icon.png" width="130px" alt="" class="logo"></a>
         <nav>
             <ul class="nav_link">
-                <li><a href="/list.php">Pendonor</a></li>
+                <li><a href="list.php">Donor</a></li>
             </ul>
         </nav>
         <a href="login.php" class="cta"><button>Log Out</button></a>

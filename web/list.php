@@ -161,7 +161,7 @@
                     <h3 class="modal-title" >Create Profile!</h3>
                 </div>
 
-            <form id="form_daftar" method="post">
+            <form id="form_daftar" method="post" action="/api/create.php">
                 <div class="modal-body mx-3">
                     <label>Nama</label>  
                     <input name="name" id="name" class="form-control" required>  

@@ -53,10 +53,10 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
         }
 
         header {
-            display: flex;
+            display:flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 10%;
+            padding: 10px 10%;
             background-color: #BB002D;
         }
 
@@ -91,10 +91,10 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
         }
 
         button {
-            padding: 9px 25px;
-            background-color: rgba(220, 220, 220, 1);
+            padding: 9px 20px;
+            background-color: rgba(220,220,220,1);
             border: none;
-            border-radius: 50px;
+            border-radius: 30px;
             cursor: pointer;
             transition: all 0.3s ease 0;
         }
@@ -131,13 +131,9 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
 <body>
 
     <header>
-        <a href="profile.php"><img src="Asset/Icon.png" width="130px" alt="" class="logo"></a>
-        <nav>
-            <ul class="nav_link">
-                <li><a href="list.php">Donor</a></li>
-            </ul>
-        </nav>
-        <a href="login.php" class="cta"><button>Log Out</button></a>
+      <a href="list.php"><img src="Asset/Icon.png" width="120px"alt="" class="logo"></a>
+       
+      <a href="Login.php" class="cta"><button>Log Out</button></a>
     </header>
 
     <div class="search-container" style="padding:20px;">
@@ -267,6 +263,7 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                                     <th>ID </th>
                                     <th>Donor's ID</th>
                                     <th>Date</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -336,9 +333,9 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                     </br>
 
                     <div class='form-row'>
-                        <div class='col-xs-4 form-group'>
+                        <div class='col-ss-4 form-group'>
                             <label>Blood Type</label>
-                            <input type="text" name="bloodtype" value="<?= $resultid[0]['golongan darah'] ?>" id="bloodtype" size='2' class="form-control">
+                            <input type="text" name="bloodtype" id="bloodtype" size='2' class="form-control">
                         </div>
                         <div class='col-xs-4 form-group '>
                             <label class='control-label'>Rhesus</label>
@@ -360,7 +357,7 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                     <div class="modal-footer">
                         <div id="keterangan"></div>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" id="submit_daftar" name="submit_daftar" class="btn btn-success"><i class="lnr lnr-plus-circle"></i> Edit!</button>
+                        <button type="submit" id="submit_daftar" name="submit_daftar" class="btn btn-danger"><i class="lnr lnr-plus-circle"></i> Edit!</button>
                     </div>
             </form>
         </div>

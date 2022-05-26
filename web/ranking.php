@@ -50,123 +50,109 @@
             background-color: #d96459;
             color: white;
         }
+        tr:nth-child(even) {background-color: #f2f2f2}
 
-        tr:nth-child(even) {
-            background-color: #f2f2f2
-        }
+      body{
+          background-color: #F6B3B3;
+      }
+      .container{
+          display: flex;
+          justify-content: center;
+          margin-top: 100px;
+      }
+      .card{
+          background: #BB002D;
+          width: 320px;
+          text-align: center;
+          margin: 20px;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45);
+      }
+      .card-body{
+          background: white;
+      }
 
-        body {
-            background-color: #F6B3B3;
-        }
+      .card-title{
+          background: white;
+      }
+      
+      .card-img-top{
+          height: 270px;
+      }
+      .card-footer{
+          background: #BB002D;
+      }
+      li, a{
+              font-size: 20px;
+              color: #edf0f1;
+              text-decoration: none;
+              font-style: bold;
+          }
 
-        .container {
-            display: flex;
-            justify-content: center;
-            margin-top: 100px;
-        }
+      button{
+          font-size: 16px;
+      }
 
-        .card {
-            background: #BB002D;
-            width: 320px;
-            text-align: center;
-            margin: 20px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45);
-        }
+      header{
+          display:flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px 10%;
+          background-color: #BB002D;
+      }
 
-        .card-body {
-            background: white;
-        }
+      nav{
+          background-color: #BB002D;
+      }
+      .logo {
+          cursor: pointer;
+          background-color: #BB002D;
+      }
 
-        .card-title {
-            background: white;
-        }
+      .nav_link{
+          list-style: none;
+          background-color: #BB002D;
+          border: #BB002D;
+      }
 
-        .card-img-top {
-            height: 270px;
-        }
+      .nav_link li{
+          display: inline-block;
+          padding: 0px 20px;
+          background-color: #BB002D;
+      }
 
-        .card-footer {
-            background: #BB002D;
-        }
+      .nav_link li a {
+          transition: all 0.3s ease 0;
+          background-color: #BB002D;
+      }
 
-        li,
-        a {
-            font-size: 20px;
-            color: #edf0f1;
-            text-decoration: none;
-            font-style: bold;
-        }
+      .nav_link li a.hover {
+          color: #0088a9;
+      }
 
-        button {
-            font-size: 16px;
-        }
+      button {
+          padding: 9px 20px;
+          background-color: rgba(220,220,220,1);
+          border: none;
+          border-radius: 30px;
+          cursor: pointer;
+          transition: all 0.3s ease 0;
+      }
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 10%;
-            background-color: #BB002D;
-        }
-
-        nav {
-            background-color: #BB002D;
-        }
-
-        .logo {
-            cursor: pointer;
-            background-color: #BB002D;
-        }
-
-        .nav_link {
-            list-style: none;
-            background-color: #BB002D;
-            border: #BB002D;
-        }
-
-        .nav_link li {
-            display: inline-block;
-            padding: 0px 20px;
-            background-color: #BB002D;
-        }
-
-        .nav_link li a {
-            transition: all 0.3s ease 0;
-            background-color: #BB002D;
-        }
-
-        .nav_link li a.hover {
-            color: #0088a9;
-        }
-
-        button {
-            padding: 9px 25px;
-            background-color: rgba(220, 220, 220, 1);
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease 0;
-        }
-
-        button:hover {
-            background-color: rgba(220, 220, 220, 0.8);
-        }
+      button:hover{
+          background-color: rgba(220,220,220,0.8);
+      }
     </style>
-</head>
-
-<body>
+  </head>
+      
+    <body>
     <header>
-        <a href="profile.php"><img src="Asset/Icon.png" width="130px" alt="" class="logo"></a>
-        <nav>
-            <ul class="nav_link">
-                <li><a href="list.php">Pendonor</a></li>
-            </ul>
-        </nav>
-        <a href="Login.php" class="cta"><button>Log Out</button></a>
+      <a href="list.php"><img src="Asset/Icon.png" width="120px"alt="" class="logo"></a>
+       
+      <a href="Login.php" class="cta"><button>Log Out</button></a>
     </header>
-    <br>
-    <h2 style="text-align: center;">Ranking</h2>
-    <div class="container">
+        <br>
+        <h2 style="text-align: center;">Ranking</h2>
+        <div class="container">
         <div class="row">
             <div class="col-md-3">
                 <section id="filters" data-auto-filter="true">

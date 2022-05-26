@@ -61,7 +61,7 @@
           display:flex;
           justify-content: space-between;
           align-items: center;
-          padding: 20px 10%;
+          padding: 10px 10%;
           background-color: #BB002D;
       }
 
@@ -95,10 +95,10 @@
       }
 
       button {
-          padding: 9px 25px;
+          padding: 9px 20px;
           background-color: rgba(220,220,220,1);
           border: none;
-          border-radius: 50px;
+          border-radius: 30px;
           cursor: pointer;
           transition: all 0.3s ease 0;
       }
@@ -106,48 +106,186 @@
       button:hover{
           background-color: rgba(220,220,220,0.8);
       }
+
+      .solution_cards_box .solution_card {
+        flex: 0 50%;
+        background: #fff;
+        box-shadow: 0 2px 4px 0 rgba(136, 144, 195, 0.2),
+          0 5px 15px 0 rgba(37, 44, 97, 0.15);
+        border-radius: 15px;
+        margin: 8px;
+        padding: 10px 15px;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+   
+        transition: 0.7s;
+      }
+
+      .solution_cards_box .solution_card:hover {
+        
+        background:#BB002D;
+        color: #fff;
+        transform: scale(1.1);
+        z-index: 9;
+      }
+
+      .solution_cards_box .solution_card:hover::before {
+        background: rgb(85 108 214 / 10%);
+      }
+
+      .solution_cards_box .solution_card:hover .solu_title h3,
+      .solution_cards_box .solution_card:hover .solu_description p {
+        color: #fff;
+      }
+
+
+
+      .solution_cards_box .solution_card:hover .solu_description button {
+        background: #fff !important;
+        color: #309df0;
+      }
+
+
+      .solution_card .solu_title h3 {
+        color: #212121;
+        font-size: 1.3rem;
+        margin-top: 13px;
+        margin-bottom: 13px;
+      }
+
+      .solution_card .solu_description p {
+        font-size: 15px;
+        margin-bottom: 15px;
+      }
+
+      .solution_card .solu_description button {
+        border: 0;
+        border-radius: 15px;
+        background: linear-gradient(
+          140deg,
+          #42c3ca 0%,
+          #42c3ca 50%,
+          #42c3cac7 75%
+        ) !important;
+        color: #fff;
+        font-weight: 500;
+        font-size: 1rem;
+        padding: 5px 16px;
+      }
+
+      .our_solution_content h1 {
+        text-transform: capitalize;
+        margin-bottom: 1rem;
+        font-size: 2.5rem;
+      }
+      .our_solution_content p {
+      }
+
+      .hover_color_bubble {
+        position: absolute;
+        background: #d10234;
+        width: 100rem;
+        height: 100rem;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        top: 16rem;
+        border-radius: 50%;
+        transform: rotate(-36deg);
+        left: -18rem;
+        transition: 0.7s;
+      }
+
+      .solution_cards_box .solution_card:hover .hover_color_bubble {
+        top: 0rem;
+      }
+
+      .solution_cards_box .solution_card .so_top_icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: #fff;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+
+      /*start media query*/
+      @media only screen and (min-width: 1024px) {
+        .our_solution_category {
+          width: 30%;
+          margin: 10px;
+      
+        }
+      }
     </style>
   </head>
 
   <body>
     <header>
-      <a href="profile.php"><img src="Asset/Icon.png" width="130px"alt="" class="logo"></a>
-        <nav>
-          <ul class="nav_link">
-            <li><a href="list.php">Donor</a></li>
-          </ul>
-        </nav>
+      <a href="list.php"><img src="Asset/Icon.png" width="120px"alt="" class="logo"></a>
+       
       <a href="Login.php" class="cta"><button>Log Out</button></a>
     </header>
     <section class="container">
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="Asset/create profile.png" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Create New Profile</h5>
-        </div>
-
-        <div class="card-footer">  
-          <button data-toggle="modal" data-target="#createModal" class="btn btn-light">Click Here</button>
+      <!-- create profile -->
+      <div class="our_solution_category">
+        <div class="solution_cards_box">
+          <div class="solution_card">
+            <div class="hover_color_bubble"></div>
+              <img class="so_top_icon" src="Asset/create.jpg" alt="Card image cap">
+            <div class="solu_title">
+              <h3>Create Profile</h3>
+            </div>
+            <div class="solu_description">
+              <p>
+                Create New Donor Profile.
+              </p>
+              <button data-toggle="modal" data-target="#createModal" class="btn btn-light">Create Profile</button>
+            </div>
+          </div>
+          </div>
         </div>
       </div>
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="Asset/search profile.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Search Profile</h5>
-          
-        </div>
-        <div class="card-footer">      
-            <a href="search.php" class="btn btn-light">Click Here</a>
+      <!-- search -->
+      <div class="our_solution_category">
+        <div class="solution_cards_box">
+          <div class="solution_card">
+            <div class="hover_color_bubble"></div>
+              <img class="so_top_icon" src="Asset/search.png" alt="Card image cap">
+            <div class="solu_title">
+              <h3>Search Profile</h3>
+            </div>
+            <div class="solu_description">
+              <p>
+                Search Donor Profile.
+              </p>
+              <a href="search.php" class="search_btn"><button>Search</button></a>
+            </div>
+          </div>
+          </div>
         </div>
       </div>
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="Asset/ranking.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Ranking</h5>
-        
-        </div>
-        <div class="card-footer">      
-            <a href="ranking.php" class="btn btn-light">Click Here</a>
+      <!-- ranking -->
+      <div class="our_solution_category">
+        <div class="solution_cards_box">
+          <div class="solution_card">
+            <div class="hover_color_bubble"></div>
+              <img class="so_top_icon" src="Asset/ranking2.png" alt="Card image cap">
+            <div class="solu_title">
+              <h3>Ranking</h3>
+            </div>
+            <div class="solu_description">
+              <p>
+                View Donor Rankings.
+              </p>
+              <a href="ranking.php" class="ranking_btn"><button>View Ranking</button></a>
+            </div>
+          </div>
+          </div>
         </div>
       </div>
     </section>
@@ -174,7 +312,7 @@
                     </br>  
 
                     <div class='form-row'>
-                        <div class='col-xs-4 form-group'>
+                        <div class='col-xs-3 form-group'>
                             <label>Blood Type</label>  
                             <input type="text" name="bloodtype" id="bloodtype" size='2' class="form-control" required>      
                         </div>
@@ -191,18 +329,18 @@
                     <input name="email" id="email" class="form-control" required>  
                     </br>
 
-                    <label>Phone Number</label>  
+                    <label>Phone</label>  
                     <input name="phone" id="phone" class="form-control" required>  
                     </br>
               
                 <div class="modal-footer">
                     <div id="keterangan"></div>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" id="submit_daftar" name="submit_daftar" class="btn btn-success"><i class="lnr lnr-plus-circle"></i> Create!</button>
+                    <button type="submit" id="submit_daftar" name="submit_daftar" class="btn btn-danger"><i class="lnr lnr-plus-circle"></i> Create!</button>
                 </div>
             </form>
         </div>
     </div>
-       
+    
   </body>
 </html>

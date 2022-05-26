@@ -138,7 +138,7 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
 
     <div class="search-container" style="padding:20px;">
         <form action="searchphp.php" method="post">
-            <input type="text" placeholder="Masukkan ID" name="search" id="search" style="width:600px; height: 30px; padding: 10px;">
+            <input type="text" placeholder="Insert ID" name="search" id="search" style="width:600px; height: 30px; padding: 10px;">
 
         </form>
 
@@ -168,7 +168,7 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                                             <tr>
                                                 <td class="textt">Gender</td>
                                                 <td>:</td>
-                                                <td><?php echo $resultid[0]['jenis kelamin']; ?></td>
+                                                <td><?= $resultid[0]['jenis kelamin'] == 'Laki-Laki' ? 'Male' : 'Female'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="textt">Blood Type</td>
@@ -204,7 +204,7 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                                                 <td class="textt">Date Joined</td>
                                                 <td>:</td>
                                                 <td><?php
-                                                    $result = $conn->query("select concat( TIMESTAMPDIFF(WEEK, MIN(tanggal), now()),' week or ', TIMESTAMPDIFF(MONTH, MIN(tanggal), now()), ' month' ) as firstime from transaksi where id_pendonor = $id[id]");
+                                                    $result = $conn->query("select concat( TIMESTAMPDIFF(WEEK, MIN(tanggal), now()),' weeks or ', TIMESTAMPDIFF(MONTH, MIN(tanggal), now()), ' month' ) as firstime from transaksi where id_pendonor = $id[id]");
                                                     $row = mysqli_fetch_assoc($result);
                                                     echo $row["firstime"];
                                                     ?></td>
@@ -215,7 +215,7 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                                                 <td><?php
                                                     $result = $conn->query("select aktif from donor where id = $id[id]");
                                                     $row = mysqli_fetch_assoc($result);
-                                                    echo $row["aktif"] == 1 ? "Active" : "Non-Active";
+                                                    echo $row["aktif"] == 1 ? "Active" : "Inactive";
                                                     ?></td>
                                             </tr>
                                             <tr>
@@ -269,7 +269,7 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                             <tbody>
                                 <?php
                                 $unix_dates = array_map(fn ($x) => strtotime($x["tanggal"]), $resulttransaksi);
-                                $result_cluster = explode( ",",cluster($resultunix));
+                                $result_cluster = explode(",", cluster($resultunix));
                                 $i = 0;
                                 foreach ($resulttransaksi as $key => $value) { ?>
                                     <tr style="background-color: <?= $result_cluster[$i] == "old" ? "#FFCCCC" : "#C4FFFC" ?>">
@@ -317,16 +317,18 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                 <h3 class="modal-title">Edit Profile!</h3>
             </div>
 
-            <form id="form_daftar" method="post">
+            <form id="form_daftar" method="post" action="/api/edit.php">
                 <div class="modal-body mx-3">
-                    <label>Name</label>
-                    <input name="name" id="name" class="form-control">
+                    <label>ID</label>
+                    <input readonly name="id" id="id" value="<?= $resultid[0]['id'] ?>" class="form-control">
                     </br>
-
-                    <label>Sex</label>
-                    <select name="gender" id="gender" class="form-control">
-                        <option value="Male">Laki-Laki</option>
-                        <option value="Female">Perempuan</option>
+                    <label>Name</label>
+                    <input name="name" id="name" value="<?= $resultid[0]['nama'] ?>" class="form-control">
+                    </br>
+                    <label>Gender</label>
+                    <select name="gender" id="gender" value="<?= $resultid[0]['jenis kelamin'] ?>" class="form-control">
+                        <option value="Laki-Laki">Male</option>
+                        <option value="Perempuan">Female</option>
                     </select>
                     </br>
 
@@ -345,11 +347,11 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                     </div>
 
                     <label>Email</label>
-                    <input name="email" id="email" class="form-control">
+                    <input name="email" id="email" value="<?= $resultid[0]['email'] ?>" class="form-control">
                     </br>
 
-                    <label>Phone</label>
-                    <input name="phone" id="phone" class="form-control">
+                    <label>Phone Number</label>
+                    <input name="phone" id="phone" value="<?= $resultid[0]['nomor HP'] ?>" class="form-control">
                     </br>
 
                     <div class="modal-footer">

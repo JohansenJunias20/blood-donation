@@ -300,16 +300,16 @@
                     <h3 class="modal-title" >Create Profile!</h3>
                 </div>
 
-            <form id="form_daftar" method="post">
+            <form id="form_daftar" method="post" action="/api/create.php">
                 <div class="modal-body mx-3">
                     <label>Name</label>  
                     <input name="name" id="name" class="form-control" required>  
                     </br>  
 
-                    <label>Sex</label>  
+                    <label>Gender</label>  
                     <select name="gender" id="gender" class="form-control">  
-                        <option value="Male">Laki-Laki</option>  
-                        <option value="Female">Perempuan</option>  
+                        <option value="Laki-Laki">Male</option>  
+                        <option value="Perempuan">Female</option>  
                     </select>  
                     </br>  
 

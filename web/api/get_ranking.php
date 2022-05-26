@@ -6,7 +6,7 @@ header("Content-Type: application/json");
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
-    $sql = "SELECT * from donor";
+    $sql = "SELECT * from donor order by score desc";
     $query = mysqli_query($con,$sql);
 
     $result = array();

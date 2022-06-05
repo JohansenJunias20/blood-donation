@@ -1,9 +1,21 @@
 <?php require_once('autoload.php');
-if (!isset($_SESSION["id2"]))
-    $id["id"] = 1;
-else
-    $id = $_SESSION["id2"];
-
+if (!isset($_SESSION["id2"])){
+    if(!isset($_GET['id_donor'])){
+        $id["id"] = 1;
+    }
+    else{
+        $id["id"] = $_GET['id_donor'];
+    }
+    
+}
+else{
+    if(!isset($_GET['id_donor'])){
+        $id = $_SESSION["id2"];
+    }
+    else{
+        $id["id"] = $_GET['id_donor'];
+    }
+}
 $nilai = "SELECT * FROM donor WHERE id = '$id[id]'";
 $resultid = mysqli_query($conn, $nilai)->fetch_all(MYSQLI_ASSOC);
 

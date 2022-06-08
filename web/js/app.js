@@ -20,6 +20,12 @@ function load_ranking(){
                 var col5 = $("<td>" + ranking['email'] + "</td>");
                 var col6 = $("<td>" + ranking['aktif'] + "</td>");           
                 var col7 = $("<td>" + ranking['score'] + "</td>");           
+
+                var col8 = $("<td>" +
+                    "<a href=ranking.php?id_donor="  + ranking['id'] +">" +
+                    "<button class='btn' type='button' style='background-color: red;  color: white;'>Delete</button> " +
+                    "</a>" +
+                    "</td>");
                 col1.appendTo(row);
                 col2.appendTo(row);
                 col3.appendTo(row);
@@ -27,7 +33,7 @@ function load_ranking(){
                 col5.appendTo(row);
                 col6.appendTo(row);
                 col7.appendTo(row);
-                             
+                col8.appendTo(row);
                 
                 $("#rankingTable").append(row);
                 

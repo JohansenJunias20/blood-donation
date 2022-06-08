@@ -1,3 +1,12 @@
+<?php require_once('autoload.php');
+if(isset($_GET['id_donor'])){
+    $delsqltransaksi = "DELETE FROM transaksi WHERE id_pendonor = {$_GET['id_donor']}";
+    $delsqluser = "DELETE FROM donor WHERE id = {$_GET['id_donor']}";
+    mysqli_query($conn, $delsqltransaksi);
+    mysqli_query($conn, $delsqluser);
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -138,6 +147,7 @@
                 <th>Email</th>
                 <th>Active</th>
                 <th>Score</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody id="rankingTable">
@@ -151,6 +161,7 @@
                 <th>Email</th>
                 <th>Active</th>
                 <th>Score</th>
+                <th>Delete</th>
             </tr>
         </tfoot>
 

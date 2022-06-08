@@ -16,6 +16,12 @@ else{
         $id["id"] = $_GET['id_donor'];
     }
 }
+
+if (isset($_REQUEST['submit'])){
+    $delsql = "DELETE FROM transaksi WHERE id = {$_REQUEST['id']}";
+    mysqli_query($conn, $delsql);
+}
+
 $nilai = "SELECT * FROM donor WHERE id = '$id[id]'";
 $resultid = mysqli_query($conn, $nilai)->fetch_all(MYSQLI_ASSOC);
 
@@ -306,6 +312,13 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                                             <?php
                                             echo $result_cluster[$i];
                                             ?>
+                                        </td>
+                                        <td>
+                                            <form action="" method="POST">
+                                                <input type="hidden" name="id" value=<?php echo $value['id'] ?> >
+                                                <input type="submit" class="btn btn-sm btn-danger" name="submit" value="Delete">
+                                            </form>
+                                            <!-- <button type="button"  class="btn btn-danger">Delete History</button> -->
                                         </td>
                                     </tr>
                                 <?php

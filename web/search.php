@@ -38,6 +38,9 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+    
+    
     <style>
         * {
             box-sizing: border-box;
@@ -45,10 +48,9 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
             margin: 0;
 
         }
-
+        
         body {
             background-color: #F6B3B3;
-
         }
 
         li,
@@ -69,7 +71,7 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
             justify-content: space-between;
             align-items: center;
             padding: 10px 10%;
-            background-color: #BB002D;
+            background-color: #420111;
         }
 
         nav {
@@ -78,7 +80,6 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
 
         .logo {
             cursor: pointer;
-            background-color: #BB002D;
         }
 
         .nav_link {
@@ -127,15 +128,56 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
             margin-bottom: 10px;
             box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .03);
             transition: all .3s;
+            position: relative;
+            border-radius:30px;
         }
+
+    
 
         tbody {
             font-size: 17px;
             font-weight: 300;
         }
-
+        thead {
+            color:#fff;
+        }
         .biodata {
-            padding: 10px;
+            padding: 20px;
+        }
+
+        .l-bg-cherry {
+            background: linear-gradient(to right, #420111, #BB002D) !important;
+            color: #fff;
+        }
+        .l-bg-brown {
+            background: linear-gradient(to right, #301f15, #654321) !important;
+            color: #fff;
+        }
+        .card .card-icon {
+            text-align: center;
+            line-height: 50px;
+            margin-left: 15px;
+            color: #000;
+            position: absolute;
+            right: 4%;
+            top: 20%;
+            opacity: 0.1;
+        }
+        .card .card-icon1 {
+            text-align: right;
+            line-height: 50px;
+            margin-left: 15px;
+            color: #000;
+            position: absolute;
+            right: 7.5%;
+            top: 30%;
+            opacity: 0.1;
+        }
+        .card .card-icon-large .fas, .card .card-icon-large .fa-reguler, .card .card-icon-large .fab, .card .card-icon-large .fal {
+            font-size: 275px;
+        }
+        .table {
+            width:70%;
         }
     </style>
 </head>
@@ -143,7 +185,7 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
 <body>
 
     <header>
-      <a href="list.php"><img src="Asset/Icon.png" width="120px"alt="" class="logo"></a>
+      <a href="list.php"><img src="Asset/Logo PMI.png" width="120px"alt="" class="logo"></a>
        
       <a href="Login.php" class="cta"><button>Log Out</button></a>
     </header>
@@ -157,12 +199,13 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
     </div>
 
     <!-- jika data ada -->
-    <div class="card kartu">
+    <div class="card kartu l-bg-cherry">
         <div class="row">
-            <div class="col-md-8 kertas-biodata">
-                <div class="biodata">
-                    <table width="100%">
-                        <tbody>
+            <div class="col-md-12 kertas-biodata">
+                <div class="card-icon card-icon-large"><i class="fas fa-users"></i></div>
+                <div class="biodata">    
+                    <table width="100%"> 
+                        <tbody>   
                             <tr>
                                 <td valign="top">
                                     <table width="100%" style="padding-left: 2px; padding-right: 13px;">
@@ -258,16 +301,17 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
     </div> -->
 
     <!-- jika data tidak ada -->
-    <div class="card kartu">
+    <div class="card kartu l-bg-brown">
         <div class="row">
-            <div class="col-md-8 kertas-history">
+        <div class="card-icon1 card-icon-large"><i class="fas fa-notes-medical"></i></div>
+            <div class="col-md-12 kertas-history">
+            
                 <div class="biodata">
                     <tr>
                         <td>
                             <h3>History</h3>
                         </td>
-                    </tr>
-                    <div class="container">
+                    </tr>  
                         <table class="table table-hover" id="taberu">
                             <thead>
                                 <tr>
@@ -278,6 +322,7 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                                 </tr>
                             </thead>
                             <tbody>
+                                
                                 <?php
                                 $unix_dates = array_map(fn ($x) => strtotime($x["tanggal"]), $resulttransaksi);
                                 $result_cluster = explode(",", cluster($resultunix));
@@ -314,10 +359,10 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                             </tbody>
                         </table>
                     </div>
-</body>
-</div>
-</div>
-</div>
+                </div>
+    
+        </div>
+    </div>
 </div>
 
 <!-- modal edit profile     -->

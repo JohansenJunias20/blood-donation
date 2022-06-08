@@ -61,20 +61,20 @@
           font-size: 16px;
       }
 
-      header{
-          display:flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 10px 10%;
-          background-color: #BB002D;
-      }
+      header {
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 10%;
+            background-color: #420111;
+        }
 
       nav{
           background-color: #BB002D;
       }
       .logo {
           cursor: pointer;
-          background-color: #BB002D;
+       
       }
 
       .nav_link{
@@ -115,7 +115,7 @@
       
     <body>
     <header>
-      <a href="list.php"><img src="Asset/Icon.png" width="120px"alt="" class="logo"></a>
+      <a href="list.php"><img src="Asset/Logo PMI.png" width="120px"alt="" class="logo"></a>
        
       <a href="Login.php" class="cta"><button>Log Out</button></a>
     </header>

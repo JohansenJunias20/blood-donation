@@ -36,20 +36,20 @@
           font-size: 16px;
       }
 
-      header{
-          display:flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 10px 10%;
-          background-color: #BB002D;
-      }
+      header {
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 10%;
+            background-color: #420111;
+        }
 
       nav{
           background-color: #BB002D;
       }
       .logo {
           cursor: pointer;
-          background-color: #BB002D;
+         
       }
 
       .nav_link{
@@ -215,7 +215,7 @@
 
   <body>
     <header>
-        <img src="Asset/Icon.png" width="130px"alt="" class="logo">
+        <img src="Asset/Logo PMI.png" width="130px"alt="" class="logo">
         <a href="#">Home</a>
         <a href="#dashboard">Dashboard</a>
         <a href="#aboutus">About Us</a>

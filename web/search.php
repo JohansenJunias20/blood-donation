@@ -230,15 +230,14 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                                                     echo $row["aktif"] == 1 ? "Active" : "Inactive";
                                                     ?></td>
                                             </tr>
-                                            <tr>
-                                                <td valign="top" class="textt"><button type="button" data-toggle="modal" data-target="#editModal" class="btn btn-danger">Edit Profile</button></td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                    <td valign="top" class="textt"><button type="button" data-toggle="modal" data-target="#addModal" class="btn btn-success">Add Data</button></td>
+                    <td valign="top" class="textt"><button type="button" data-toggle="modal" data-target="#editModal" class="btn btn-danger">Edit Profile</button></td>
                 </div>
             </div>
         </div>
@@ -345,16 +344,17 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                     </br>
 
                     <div class='form-row'>
-                        <div class='col-ss-4 form-group'>
+                        <div class='col-ss-2 form-group'>
                             <label>Blood Type</label>
-                            <input type="text" name="bloodtype" id="bloodtype" size='2' class="form-control">
+                            <input readonly name="bloodtype" id="bloodtype" value="<?= $resultid[0]['golongan darah'] ?>" class="form-control">
                         </div>
-                        <div class='col-xs-4 form-group '>
+                        <div class='col-xs-2 form-group '>
                             <label class='control-label'>Rhesus</label>
-                            <select name="rhesus" id="rhesus" class="form-control">
+                            <input readonly name="bloodtype" id="bloodtype" value="<?= $resultid[0]['resus'] ?>" class="form-control">
+                            <!-- <select name="rhesus" id="rhesus" class="form-control">
                                 <option value="+">+</option>
                                 <option value="-">-</option>
-                            </select>
+                            </select> -->
                         </div>
                     </div>
 
@@ -371,9 +371,46 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" id="submit_daftar" name="submit_daftar" class="btn btn-danger"><i class="lnr lnr-plus-circle"></i> Edit!</button>
                     </div>
+                </div>    
             </form>
         </div>
     </div>
-    </body>
+</div>
 
+<!-- modal add data     -->
+
+        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Add Donors Data</h3>
+                    </div>
+
+                    <form id="form_daftar" method="post" action="/api/add.php">
+                        <div class="modal-body mx-4">
+                            <div class='form-row'>
+                                <div class='col-ss-2 form-group'>
+                                    <label>ID: </label>
+                                    <input readonly name="id" id="id" value="<?= $resultid[0]['id'] ?>" class="form-control">
+
+                                </div>
+                                <div class='col-xs-2 form-group '>
+                                    <label>Name</label>
+                                    <input readonly name="name" id="name" value="<?= $resultid[0]['nama'] ?>" class="form-control">
+                                </div>
+                            </div>
+                            <label>Date: <?= date("Y-m-d") ?></label>
+                            <div class="modal-footer">
+                                <div id="keterangan"></div>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" id="submit_daftar" name="submit_daftar" class="btn btn-success"><i class="lnr lnr-plus-circle"></i> Add Data</button>
+                            </div>
+                        </div>    
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </body>
 </html>

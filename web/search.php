@@ -448,7 +448,7 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                         <div class="modal-body mx-4">
                             <div class='form-row'>
                                 <div class='col-ss-2 form-group'>
-                                    <label>ID: </label>
+                                    <label>ID </label>
                                     <input readonly name="id" id="id" value="<?= $resultid[0]['id'] ?>" class="form-control">
 
                                 </div>
@@ -457,7 +457,10 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                                     <input readonly name="name" id="name" value="<?= $resultid[0]['nama'] ?>" class="form-control">
                                 </div>
                             </div>
-                            <label>Date: <?= date("Y-m-d") ?></label>
+                            <label>Date</label>
+                            <br>
+                            <label><input type="date" name="date" id="date"  value="<?= date("Y-m-d") ?>" class="form-control"></label>
+                            
                             <div class="modal-footer">
                                 <div id="keterangan"></div>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -25,7 +25,7 @@ if (isset($_REQUEST['submit'])){
 $nilai = "SELECT * FROM donor WHERE id = '$id[id]'";
 $resultid = mysqli_query($conn, $nilai)->fetch_all(MYSQLI_ASSOC);
 
-$nilai2 = "SELECT *,UNIX_TIMESTAMP(tanggal) unix  FROM transaksi WHERE id_pendonor = '$id[id]'";
+$nilai2 = "SELECT *,UNIX_TIMESTAMP(tanggal) unix  FROM transaksi WHERE id_pendonor = '$id[id]' order by tanggal asc";
 $resulttransaksi = mysqli_query($conn, $nilai2)->fetch_all(MYSQLI_ASSOC);
 $sql = "SELECT UNIX_TIMESTAMP(tanggal) FROM TRANSAKSI WHERE ID_PENDONOR = '$id[id]'";
 $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
@@ -45,7 +45,10 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
-    
+    <!-- add title named Detail Profile -->
+    <title>Detail Profile</title>
+    <!-- add icon same with in login.php -->
+    <link rel="icon" href="Asset/logo_pmi-removebg-preview.png">
     
     <style>
         * {
@@ -197,10 +200,10 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
     </header>
 
     <div class="search-container" style="padding:20px;">
-        <form action="searchphp.php" method="post">
+        <!-- <form action="searchphp.php" method="post">
             <input type="text" placeholder="Insert ID" name="search" id="search" style="width:600px; height: 30px; padding: 10px;">
 
-        </form>
+        </form> -->
 
     </div>
 
@@ -325,6 +328,7 @@ $resultunix = array_map(fn ($value) => $value['unix'], $resulttransaksi);
                                     <th>Donor's ID</th>
                                     <th>Date</th>
                                     <th>Status</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login_Page</title>
-
+    <!-- add icon logo PMI reovebg preview  -->
+    <link rel="icon" href="Asset/logo_pmi-removebg-preview.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <style>
@@ -49,6 +50,15 @@
 </head>
 
 <body>
+    <script>
+        //check if error parameter query is set
+        if (window.location.href.indexOf("error") > -1) {
+            //if error parameter is set, show error message
+            alert("Username or Password is incorrect");
+            // redirect back to login.php without parameter
+            window.location.href = "Login.php";
+        }
+    </script>
     <div class="login-form">
         <form action="loginphp.php" method="post">
             <div style="width:100%; text-align:center">
@@ -66,9 +76,9 @@
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-block">Login</button>
             </div>
-            <div class="botomline">
+            <div style="display: flex;justify-content:center">
                 <a href="Register.php" class="float-left">Create an Account!</a>
-                <a href="Forget_Password.php" class="float-right" >Forgot Password?</a>
+                <!-- <a href="Forget_Password.php" class="float-right" >Forgot Password?</a> -->
             </div>        
         </form>
     </div>

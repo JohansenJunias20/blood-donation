@@ -18,6 +18,7 @@ if($login->num_rows > 0)
 }
 else
 {
+    header("Location: login.php?error=Incorrect username or password");  
     
 }
 $conn->close();

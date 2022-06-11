@@ -9,7 +9,7 @@ function load_ranking(){
                 var row = $("<tr></tr>");
                 var col1 = $("<td>" +
                     "<a href=search.php?id_donor="  + ranking['id'] +">" +
-                    "<button class='btn' type='button' style='background-color: red;  color: white;'>Check</button> " +
+                    "<button class='btn' type='button' style='background-color: red;  color: white;'>View</button> " +
                     "</a>" +
                     + "</td>");
 
@@ -45,53 +45,53 @@ function load_ranking(){
 
 
 
-function aload_table(){
-    $('#example tfoot th').each(function () {
-        var title = $(this).text();
-        $(this).html('<input type="text" placeholder="Search ' + title + '" />');
-    });
-    var table = $('#tableRanking').DataTable({
-        initComplete: function () {
-            // Apply the search
-            this.api()
-                .columns()
-                .every(function () {
-                    var that = this;
- 
-                    $('input', this.footer()).on('keyup change clear', function () {
-                        if (that.search() !== this.value) {
-                            that.search(this.value).draw();
-                        }
-                    });
-                });
-        },
-    });
-	
-}
 
 function load_table(){
-    $('#tableRanking tfoot th').each(function () {
-        var title = $(this).text();
-        $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+    var table = $('#tableRanking').DataTable({
+        searchPanes: true,
+        dom: 'Blfrtip',
+        buttons: [
+       {
+           extend: 'pdf',
+           footer: true,
+           exportOptions: {
+                columns: [1,2,3,4,5,6]
+            }
+       },
+       {
+           extend: 'csv',
+           footer: false,
+           exportOptions: {
+                columns: [1,2,3,4,5,6]
+            }
+          
+       },
+       {
+           extend: 'excel',
+           footer: false,
+           exportOptions: {
+                columns: [1,2,3,4,5,6]
+            }
+       },
+       {
+           extend: 'print',
+           footer: false,
+           exportOptions: {
+                columns: [1,2,3,4,5,6]
+            }
+       },
+       {
+           extend: 'copy',
+           footer: false,
+           exportOptions: {
+                columns: [1,2,3,4,5,6]
+            }
+       }               
+    ],  
+        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
     });
-	$('#tableRanking').DataTable({
-        initComplete: function () {
-            // Apply the search
-            this.api()
-                .columns()
-                .every(function () {
-                    var that = this;
- 
-                    $('input', this.footer()).on('keyup change clear', function () {
-                        if (that.search() !== this.value) {
-                            that.search(this.value).draw();
-                        }
-                    });
-                });
-        },
-    dom: 'Blfrtip',
-    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-    scrollX: true
-    
-  });
+    table.searchPanes.container().prependTo(table.table().container());
+    table.searchPanes.resizePanes();
+
+	
 }

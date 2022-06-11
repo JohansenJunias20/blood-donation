@@ -240,11 +240,11 @@
               <div class="hover_color_bubble"></div>
               <img class="so_top_icon" src="Asset/create.jpg" alt="Card image cap">
               <div class="solu_title">
-                <h3>Create Profile</h3>
+                <h3>Create Donor Transaction</h3>
               </div>
               <div class="solu_description">
                 <p>
-                  Create New Donor Profile.
+                  Create New Donor Transaction.
                 </p>
                 <button data-toggle="modal" data-target="#createModal" class="btn btn-light">Create Profile</button>
               </div>
@@ -302,7 +302,7 @@
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h3 class="modal-title">Create Profile!</h3>
+            <h3 class="modal-title">Create Donor Transaction</h3>
           </div>
 
           <form id="form_daftar" method="post" action="/api/create.php">
@@ -338,6 +338,9 @@
 
               <label>Phone</label>
               <input name="phone" id="phone" class="form-control" required>
+              </br>
+              <label>NIK</label>
+              <input name="nik" id="nik" class="form-control" required>
               </br>
 
               <div class="modal-footer">
